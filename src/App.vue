@@ -13,7 +13,9 @@
                     <a class="nav-link active">
                         <router-link class="nav-font" to="/artist">Artist</router-link>
                     </a>
-                    <a class="nav-link disabled">Artworks</a>
+                    <a class="nav-link">
+                        <router-link class="nav-font" to="/artworks">Artworks</router-link>
+                    </a>
                     <a class="nav-link disabled">Exhibtions</a>
                     <a class="nav-link disabled">Portfolio</a>
                     <a class="nav-link disabled">News Press</a>

@@ -7,22 +7,27 @@
         <div class="col-8">
             <div class="row">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-light" @click="btnData('Exhibitions')">Exhibitions</button>
-                    <button type="button" class="btn btn-light" @click="btnData('Group-Exhibitions')">Selected And
-                        Invitational Group Exhibitions</button>
+                    <button type="button" class="btn btn-light"
+                        @click="btnData('Exhibitions'); this.title = 'Exhibitions'">Exhibitions</button>
+                    <button type="button" class="btn btn-light"
+                        @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
+                        Exhibitions</button>
+                    <button type="button" class="btn btn-light"
+                        @click="btnData('Awards'); this.title = 'Awards & Professional Affiliations'">Awards</button>
                 </div>
+
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-light" @click="btnData('Awards')">Awards & Professional
-                        Affiliations</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-light" @click="btnData('Reviews')">Published Articles &
-                        Reviews</button>
-                    <button type="button" class="btn btn-light" @click="btnData('Carrer')">Published Articles &
-                        Reviews</button>
+                    <button type="button" class="btn btn-light"
+                        @click="btnData('Reviews'); this.title = 'Published Articles & Reviews'">Reviews</button>
+                    <button type="button" class="btn btn-light"
+                        @click="btnData('Carrer'); this.title = 'Published Articles & Reviews'">Published
+                        Articles</button>
                 </div>
             </div>
             <div class="row mt-4">
+                <div>
+                    <h3>{{ title }}</h3>
+                </div>
                 <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
                     <thead>
                         <tr>
@@ -50,7 +55,6 @@ export default {
     methods: {
         btnData(data) {
             axios.get("/json/" + data + ".json").then((response) => {
-                // console.log(response.data);
                 this.tableData = response.data
             })
         }
@@ -58,22 +62,9 @@ export default {
     data() {
         return {
             profileIMG: require('../assets/profile.jpg'),
+            title: 'Exhibitions',
             tableData: [],
-            columns: [
-                // {
-                //     data: "업종명", "render": function (data, type, row) {
-                //         if (type == 'display') {
-                //             if (data == 'Kospi') { var data = "코스피"; }
-                //             if (data == 'Kosdaq') { var data = "코스닥"; }
-                //             if (data == 'Kospi200') { var data = "<span style='color:greenyellow'>코스피200</span>"; }
-                //         }
-                //         return data;
-                //     }
-                // },
-                { data: "year" },
-                { data: "title" },
-                { data: "location" }
-            ],
+            columns: [{ data: "year" }, { data: "title" }, { data: "location" }],
             options: {
                 // columnDefs: [{ targets: [3], width: "1%" }],
                 ordering: false,
