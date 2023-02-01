@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/public/img
+
 
 
 
@@ -15,6 +15,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor directories and files
+*.tif
 .idea
 .vscode
 *.suo
