@@ -15,13 +15,16 @@
                 <span class="row ms-3"> Filtered by </span>
                 <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
                 <div class="row">
-                    <div class="row">
+                    <!-- <div class="row">
                         <span class="col text-start">{{ imgYearMinMax[0] }}</span>
                         <span class="col text-end">{{ imgYearMinMax[1] }}</span>
-                    </div>
-                    <input type="range" class="form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1] id="customRange2"
-                        @input="imgYearRange($event)">
+                    </div> -->
+                    <span class="col-2 text-start">{{ imgYearMinMax[0] }}</span>
+                    <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
+                        id="customRange2" @input="imgYearRange($event, selectClass)">
+                    <span class="col-2 text-end">{{ imgYearMinMax[1] }}</span>
                 </div>
+                <span class="col">{{ showImgYear }}</span>
 
             </div>
 
@@ -30,9 +33,9 @@
                     {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
                 </h4>
                 <div class="row">
-                    <div class="col-4 col-md-2" v-for="item in imgData" :key="item">
-                        <img class="img-fluid" :src="'/img/' + item.class + '/' + item.fileName" />
-                        {{ item.imgTitle }}
+                    <div class="col-4 col-md-2 mb-4" v-for="item in imgData" :key="item">
+                        <img class="img-fluid mb-2" :src="'/img/' + item.class + '/' + item.fileName" />
+                        <span> {{ item.imgTitle }} </span>
                     </div>
                 </div>
             </div>
@@ -55,7 +58,6 @@ export default {
     components: {},
     mounted() {
         this.loadData()
-        // this.btnData(Object.values(this.classList)[0])
     },
     methods: {
         loadData() {
@@ -83,14 +85,10 @@ export default {
             var Min = Math.min(...tmp)
             this.imgYearMinMax = [Min, Max]
         },
-        imgYearRange(event) {
-            console.log(event.target.value);
+        imgYearRange(event, name) {
             const val = event.target.value;
-            const len = this.imgData.length;
-
-            for (let i = 0; i < len; i++) {
-                this.imgData.filter(v => v.imgYear >= val)
-            }
+            this.showImgYear = event.target.value;
+            this.imgData = this.allData.filter(value => value.class == name & value.imgYear >= val)
         },
     },
     data() {
@@ -100,7 +98,7 @@ export default {
             classList: [],
             selectClass: '',
             imgYearMinMax: [],
-
+            showImgYear: '',
             profileIMG: require('../assets/profile.jpg'),
             title: 'Exhibitions',
             tableData: [],

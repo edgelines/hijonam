@@ -1,6 +1,10 @@
 .DS_Store
 node_modules
+<<<<<<< HEAD
 /dist/img
+=======
+dist/img/
+>>>>>>> c313aee0814ae70c9e524977da00619bde80ca12
 
 
 
