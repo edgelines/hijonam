@@ -6,7 +6,7 @@
         </div>
         <div class="col-8">
             <div class="row">
-                <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="btn-group row-cols-auto" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-light"
                         @click="btnData('Exhibitions'); this.title = 'Exhibitions'">Exhibitions</button>
                     <button type="button" class="btn btn-light"
@@ -15,14 +15,15 @@
                     <button type="button" class="btn btn-light"
                         @click="btnData('Awards'); this.title = 'Awards & Professional Affiliations'">Awards</button>
                 </div>
-
-                <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="btn-group row-cols-auto" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-light"
                         @click="btnData('Reviews'); this.title = 'Published Articles & Reviews'">Reviews</button>
                     <button type="button" class="btn btn-light"
                         @click="btnData('Carrer'); this.title = 'Published Articles & Reviews'">Published
                         Articles</button>
+
                 </div>
+
             </div>
             <div class="row mt-4">
                 <div>
