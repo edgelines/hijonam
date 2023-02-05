@@ -1,24 +1,35 @@
 <template>
-    <div class="row mt-5">
+    <div class="row">
         <!-- {{ imgData[0] }} -->
         <div class="row">
-            <div class="col" v-for="classItem in classList" :key="classItem">
+            <swiper ref="{swiperRef}" :slidesPerView="8" :centeredSlides="true" :spaceBetween="30" :pagination="{
+                type: 'fraction',
+            }" :navigation="true" :modules="modules" class="mySwiper">
+                <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
+                    <button type="button" class="btn btn-light" @click="btnData(classItem)">
+                        <img class="img-fluid mx-auto" :src="'/img/' + classItem + '/' + classListImg[i]" />
+                        <span>
+                            {{ classItem }}
+                        </span>
+                    </button>
+                </swiper-slide>
+            </swiper>
+            <!-- <div class="col" v-for="(classItem, i) in classList" :key="classItem">
                 <button type="button" class="btn btn-light" @click="btnData(classItem)">
-                    <!-- <img class="img-fluid" :src="'/img/' + classItem + '/' + imgData.fileName" /> -->
-                    {{ classItem }}
+                    <div class="mb-3 col-md-4">
+                        <img class="img-fluid mx-auto" :src="'/img/' + classItem + '/' + classListImg[i]" />
+                    </div>
+                    <span>
+                        {{ classItem }}
+                    </span>
                 </button>
-            </div>
+            </div> -->
         </div>
-        <div class="row mt-5">
+        <div class="row">
             <div class="col-3">
-
                 <span class="row ms-3"> Filtered by </span>
                 <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
                 <div class="row">
-                    <!-- <div class="row">
-                        <span class="col text-start">{{ imgYearMinMax[0] }}</span>
-                        <span class="col text-end">{{ imgYearMinMax[1] }}</span>
-                    </div> -->
                     <span class="col-2 text-start">{{ imgYearMinMax[0] }}</span>
                     <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
                         id="customRange2" @input="imgYearRange($event, selectClass)">
@@ -39,38 +50,41 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <v-container>
-                <v-row>
-                    <v-col cols="12" v-for="count in 12" :key="12" align-self="center">
-                        <v-card class="pa-3">hello</v-card>
-                    </v-col>
-                </v-row>
-            </v-container> -->
         </div>
     </div>
 
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
 export default {
-    components: {},
+    components: { Swiper, SwiperSlide, },
     mounted() {
         this.loadData()
     },
     methods: {
         loadData() {
             axios.get("/json/data.json").then((response) => {
-                var tmp = [];
-                this.allData = response.data
-                response.data.forEach((value, index, array) => { tmp.push(value.class); })
+                var tmp = [], tmpImg = [];
+                this.allData = response.data.filter(v => v.category == 'Artworks')
+                this.allData.forEach((value, index, array) => { tmp.push(value.class); })
                 const set = new Set(tmp)
                 const newArr = [...set]
                 this.classList = newArr
 
+                newArr.forEach((value) => {
+                    this.mainImg(value)
+                })
                 this.btnData(Object.values(this.classList)[0]);
             })
+        },
+        mainImg(name) {
+            const filter = this.allData.filter(v => v.class == name)
+            this.classListImg.push(filter[1].fileName)
         },
         btnData(name) {
             const filter = this.allData.filter(v => v.class == name)
@@ -96,31 +110,64 @@ export default {
             allData: [],
             imgData: [],
             classList: [],
+            classListImg: [],
             selectClass: '',
             imgYearMinMax: [],
             showImgYear: '',
-            profileIMG: require('../assets/profile.jpg'),
-            title: 'Exhibitions',
-            tableData: [],
-            columns: [{ data: "year" }, { data: "title" }, { data: "location" }],
-            options: {
-                // columnDefs: [{ targets: [3], width: "1%" }],
-                ordering: false,
-                lengthMenu: [5],
-                lengthChange: false,
-                searching: false,
-                info: false,
-                order: false,
-                scrollY: '500px',
-                scrollCollapse: true,
-                paging: false,
-                autoWidth: true,
-            },
+        }
+    },
+    setup() {
+        return {
+            modules: [Navigation, Pagination],
         }
     }
 }
 </script>
 
 <style>
+.swiper {
+    width: 100%;
+    height: 100%;
+}
 
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper {
+    width: 100%;
+    height: 300px;
+    margin: 20px auto;
+}
+
+.append-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.append-buttons button {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #007aff;
+    color: #007aff;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+    font-size: 13px;
+}
 </style>
