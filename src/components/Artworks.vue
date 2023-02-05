@@ -1,7 +1,6 @@
 <template>
     <div class="row">
-        <!-- {{ imgData[0] }} -->
-        <div class="row">
+        <div class="row mt-5">
             <swiper ref="{swiperRef}" :slidesPerView="8" :centeredSlides="true" :spaceBetween="30" :pagination="{
                 type: 'fraction',
             }" :navigation="true" :modules="modules" class="mySwiper">
@@ -14,16 +13,6 @@
                     </button>
                 </swiper-slide>
             </swiper>
-            <!-- <div class="col" v-for="(classItem, i) in classList" :key="classItem">
-                <button type="button" class="btn btn-light" @click="btnData(classItem)">
-                    <div class="mb-3 col-md-4">
-                        <img class="img-fluid mx-auto" :src="'/img/' + classItem + '/' + classListImg[i]" />
-                    </div>
-                    <span>
-                        {{ classItem }}
-                    </span>
-                </button>
-            </div> -->
         </div>
         <div class="row">
             <div class="col-3">
@@ -84,7 +73,7 @@ export default {
         },
         mainImg(name) {
             const filter = this.allData.filter(v => v.class == name)
-            this.classListImg.push(filter[1].fileName)
+            this.classListImg.push(filter[0].fileName)
         },
         btnData(name) {
             const filter = this.allData.filter(v => v.class == name)
@@ -125,49 +114,5 @@ export default {
 </script>
 
 <style>
-.swiper {
-    width: 100%;
-    height: 100%;
-}
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.swiper {
-    width: 100%;
-    height: 300px;
-    margin: 20px auto;
-}
-
-.append-buttons {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.append-buttons button {
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid #007aff;
-    color: #007aff;
-    text-decoration: none;
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin: 0 10px;
-    font-size: 13px;
-}
 </style>

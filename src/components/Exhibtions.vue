@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="row">
+        <div class="row mt-5">
             <swiper ref="{swiperRef}" :slidesPerView="8" :centeredSlides="true" :spaceBetween="30" :pagination="{
                 type: 'fraction',
             }" :navigation="true" :modules="modules" class="mySwiper">
@@ -60,7 +60,7 @@ export default {
         },
         mainImg(name) {
             const filter = this.allData.filter(v => v.class == name)
-            this.classListImg.push(filter[1].fileName)
+            this.classListImg.push(filter[0].fileName)
         },
         btnData(name) {
             const filter = this.allData.filter(v => v.class == name)
