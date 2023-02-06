@@ -1,8 +1,8 @@
 <template>
     <div class="row">
         <div class="row mt-5">
-            <swiper ref="{swiperRef}" :slidesPerView="8" :centeredSlides="true" :spaceBetween="30" :pagination="{
-                type: 'fraction',
+            <swiper :slidesPerView="4" :spaceBetween="30" :pagination="{
+                type: 'progressbar',
             }" :navigation="true" :modules="modules" class="mySwiper">
                 <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
                     <button type="button" class="btn btn-light" @click="btnData(classItem)">
@@ -91,7 +91,7 @@ export default {
         imgYearRange(event, name) {
             const val = event.target.value;
             this.showImgYear = event.target.value;
-            this.imgData = this.allData.filter(value => value.class == name & value.imgYear >= val)
+            this.imgData = this.allData.filter(value => value.class == name & value.imgYear <= val)
         },
     },
     data() {

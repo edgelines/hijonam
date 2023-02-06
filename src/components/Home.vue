@@ -4,7 +4,7 @@
     </div>
     <div class="row mt-5">
         <h2>{{ homeArtworks.length }} : Artworks</h2>
-        <swiper ref="{swiperRef}" :slidesPerView="8" :centeredSlides="true" :spaceBetween="30" :pagination="{
+        <swiper :slidesPerView="4" :spaceBetween="30" :pagination="{
             type: 'fraction',
         }" :navigation="true" :modules="modules" class="mySwiper">
             <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
@@ -18,9 +18,9 @@
         </swiper>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
         <h2>{{ homeExhibtions.length }} : Exhibtions</h2>
-        <swiper ref="{swiperRef}" :slidesPerView="8" :centeredSlides="true" :spaceBetween="30" :pagination="{
+        <swiper :slidesPerView="2" :spaceBetween="30" :pagination="{
             type: 'fraction',
         }" :navigation="true" :modules="modules" class="mySwiper">
             <swiper-slide v-for="(classItem, i) in classListEx" :key="classItem">
