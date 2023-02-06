@@ -36,7 +36,7 @@
         </div>
     </div>
     <footer class="bg-light">
-        footer sectors <br />
+        footer <br />
         instagram, kakao, facebook, youtube
     </footer>
 </template>
