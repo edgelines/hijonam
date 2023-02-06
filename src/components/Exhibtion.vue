@@ -2,15 +2,18 @@
     <div class="row">
         <div class="row mt-5">
             <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
-                type: 'fraction',
-            }" :navigation="true" :modules="modules" class="mySwiper">
+                type: 'progressbar',
+            }" :navigation="true" :modules="modules" :scrollbar="{
+    hide: false,
+}" class="mySwiper">
                 <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
-                    <button type="button" class="btn btn-light" @click="btnData(classItem)">
-                        <img class="img-fluid mx-auto" :src="'/img/Exhibtions/' + classListImg[i]" />
+                    <div class="divImgList text-center" @click="btnData(classItem)">
+                        <img class="img-fluid" :src="'/img/Exhibtions/' + classListImg[i]" />
                         <span>
                             {{ classItem }}
                         </span>
-                    </button>
+
+                    </div>
                 </swiper-slide>
             </swiper>
         </div>
@@ -20,9 +23,9 @@
                     {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
                 </h4>
                 <div class="row">
-                    <div class="col-4 col-md-2 mb-4" v-for="item in imgData" :key="item">
-                        <img class="img-fluid mb-2" :src="'/img/Exhibtions/' + item.fileName" />
-                        <span> {{ item.imgTitle }} </span>
+                    <div class="col-3 col-md-3 mb-4" v-for="item in imgData" :key="item">
+                        <img class="divImgDetail img-fluid mb-2" :src="'/img/Exhibtions/' + item.fileName" />
+                        <!-- <span> {{ item.imgTitle }} </span> -->
                     </div>
                 </div>
             </div>

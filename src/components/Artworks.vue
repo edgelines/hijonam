@@ -1,16 +1,16 @@
 <template>
     <div class="row">
         <div class="row mt-5">
-            <swiper :slidesPerView="4" :spaceBetween="30" :pagination="{
+            <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
                 type: 'progressbar',
             }" :navigation="true" :modules="modules" class="mySwiper">
                 <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
-                    <button type="button" class="btn btn-light" @click="btnData(classItem)">
-                        <img class="img-fluid mx-auto" :src="'/img/' + classItem + '/' + classListImg[i]" />
+                    <div class="divImgList text-center" @click="btnData(classItem)">
+                        <img class="img-fluid" :src="'/img/' + classItem + '/' + classListImg[i]" />
                         <span>
                             {{ classItem }}
                         </span>
-                    </button>
+                    </div>
                 </swiper-slide>
             </swiper>
         </div>
@@ -33,9 +33,11 @@
                     {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
                 </h4>
                 <div class="row">
-                    <div class="col-4 col-md-2 mb-4" v-for="item in imgData" :key="item">
-                        <img class="img-fluid mb-2" :src="'/img/' + item.class + '/' + item.fileName" />
-                        <span> {{ item.imgTitle }} </span>
+                    <div class="col-6 col-md-3 mb-4" v-for="item in imgData" :key="item">
+                        <div class="align-bottom">
+                            <img class="img-fluid mb-2 " :src="'/img/' + item.class + '/' + item.fileName" />
+                            <span> {{ item.imgTitle }} </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +75,8 @@ export default {
         },
         mainImg(name) {
             const filter = this.allData.filter(v => v.class == name)
-            this.classListImg.push(filter[0].fileName)
+            const last = filter.length;
+            this.classListImg.push(filter[last - 1].fileName)
         },
         btnData(name) {
             const filter = this.allData.filter(v => v.class == name)
@@ -114,5 +117,14 @@ export default {
 </script>
 
 <style>
+.divImgList {
+    width: 350px;
+    height: 200px;
 
+}
+
+.divImgDetail {
+    width: 350px;
+    height: 200px;
+}
 </style>
