@@ -1,5 +1,6 @@
 <template>
     <div class="row">
+        <ArworksModal @closeModal="모달창상태 = false;" :모달창상태="모달창상태" :imgURL="imgURL" :imgID="imgID" :imgData="imgData" />
         <div class="row mt-5">
             <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
                 type: 'progressbar',
@@ -14,6 +15,8 @@
                 </swiper-slide>
             </swiper>
         </div>
+
+
         <div class="row">
             <div class="col-3">
                 <span class="row ms-3"> Filtered by </span>
@@ -33,8 +36,9 @@
                     {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
                 </h4>
                 <div class="row">
-                    <div class="col-6 col-md-3 mb-4" v-for="item in imgData" :key="item">
-                        <div class="align-bottom">
+                    <div class="col-6 col-md-3 mb-4" v-for="(item, i) in imgData" :key="item">
+                        <div class="align-bottom"
+                            @click="모달창상태 = true; this.imgURL = '/img/' + item.class + '/' + item.fileName; this.imgID = i;">
                             <img class="img-fluid mb-2 " :src="'/img/' + item.class + '/' + item.fileName" />
                             <span> {{ item.imgTitle }} </span>
                         </div>
@@ -52,11 +56,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
+import ArworksModal from './Modal/ArworksModal.vue';
 export default {
-    components: { Swiper, SwiperSlide, },
-    mounted() {
-        this.loadData()
-    },
+    components: { Swiper, SwiperSlide, ArworksModal },
+    mounted() { this.loadData() },
     methods: {
         loadData() {
             axios.get("/json/data.json").then((response) => {
@@ -99,6 +102,7 @@ export default {
     },
     data() {
         return {
+            모달창상태: false,
             allData: [],
             imgData: [],
             classList: [],
@@ -106,6 +110,8 @@ export default {
             selectClass: '',
             imgYearMinMax: [],
             showImgYear: '',
+            imgID: '',
+            imgURL: '',
         }
     },
     setup() {

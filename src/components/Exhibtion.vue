@@ -17,7 +17,7 @@
                 </swiper-slide>
             </swiper>
         </div>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col">
                 <h4 class="text-start mb-3">
                     {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
