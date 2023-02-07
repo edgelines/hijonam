@@ -18,13 +18,33 @@
                         <a class="nav-link">
                             <router-link class="nav-font" to="/artworks">Artworks</router-link>
                         </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-font nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Exhibtion
+                            </a>
+                            <ul class="dropdown-menu">
+                                <a class="dropdown-item">
+                                    <router-link class="nav-font" to="/exhibtion">Past Exhibtion</router-link>
+                                </a>
+                                <a class="dropdown-item">
+                                    <router-link class="nav-font" to="/upcoming">Upcoming Exhibtion</router-link>
+                                </a>
+                            </ul>
+                        </li>
                         <a class="nav-link">
-                            <router-link class="nav-font" to="/exhibtion">Exhibtion</router-link>
+                            <router-link class="nav-font" to="/portfolio">Portfolio</router-link>
                         </a>
-                        <a class="nav-link disabled">Portfolio</a>
-                        <a class="nav-link disabled">News Press</a>
-                        <a class="nav-link disabled">Pictures</a>
-                        <a class="nav-link disabled">Contact</a>
+                        <a class="nav-link">
+                            <router-link class="nav-font" to="/News">News Press</router-link>
+                        </a>
+                        <a class="nav-link">
+                            <router-link class="nav-font" to="/pictures">Pictures</router-link>
+                        </a>
+                        <a class="nav-link">
+                            <router-link class="nav-font" to="/contact">Contact</router-link>
+
+                        </a>
                     </div>
                 </div>
             </div>

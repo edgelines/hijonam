@@ -35,9 +35,10 @@
                 <h4 class="text-start mb-3">
                     {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
                 </h4>
-                <div class="row">
-                    <div class="col-6 col-md-3 mb-4" v-for="(item, i) in imgData" :key="item">
-                        <div class="align-bottom"
+
+                <div class="row d-flex align-items-end">
+                    <div class="mb-4 col-6 col-md-3" v-for="(item, i) in imgData" :key="item">
+                        <div class="p-2"
                             @click="모달창상태 = true; this.imgURL = '/img/' + item.class + '/' + item.fileName; this.imgID = i;">
                             <img class="img-fluid mb-2 " :src="'/img/' + item.class + '/' + item.fileName" />
                             <span> {{ item.imgTitle }} </span>
