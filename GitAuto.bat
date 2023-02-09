@@ -1,0 +1,1 @@
+"C:\python\python.exe" "D:\hijonam\GitAuto.py"
