@@ -1,45 +1,26 @@
 <template>
-    <div class="mt-5">
-        <h1>Home</h1>
-    </div>
-    <div class="row mt-5">
-        <h2>{{ homeArtworks.length }} : Artworks</h2>
-        <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
-            type: 'progressbar',
-        }" :navigation="true" :modules="modules" class="mySwiper">
-            <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
-                <div class="divImgList text-center">
-                    <img class="img-fluid mx-auto" :src="'/img/' + classItem + '/' + classListImg[i]" />
-                    <span>
-                        {{ classItem }}
-                    </span>
-                </div>
-            </swiper-slide>
-        </swiper>
-    </div>
 
     <div class="row mt-5">
-        <h2>{{ homeExhibtions.length }} : Exhibtions</h2>
-        <swiper :slidesPerView="3" :spaceBetween="10" :pagination="{
-            type: 'progressbar',
-        }" :navigation="true" :modules="modules" class="mySwiper">
-            <swiper-slide v-for="(classItem, i) in classListEx" :key="classItem">
-                <div class="divImgList text-center">
-                    <img class="img-fluid mx-auto" :src="'/img/Exhibtions/' + classListImgEx[i]" />
-                    <span>
-                        {{ classItem }}
-                    </span>
+        <swiper :spaceBetween="100" :centeredSlides="true" :autoplay="{
+            delay: 7000, disableOnInteraction: false,
+        }" :pagination="{
+    clickable: true,
+}" :modules="modules" :pauseOnMouseEnter="true" class="mainSwiper">
+            <swiper-slide v-for="(item, i) in sliderImg" :key="item">
+                <div class="d-flex align-self-center flex-wrap mt-5">
+                    <img class="d-flex align-self-center flex-wrap" :src="'/img/Main/' + item" />
                 </div>
             </swiper-slide>
         </swiper>
     </div>
+    <!-- class="d-flex justify-content-center" -->
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation, Pagination } from 'swiper';
+import { Autoplay, Pagination, Navigation } from 'swiper';
 import axios from 'axios'
 export default {
     components: { Swiper, SwiperSlide, },
@@ -88,6 +69,8 @@ export default {
     },
     data() {
         return {
+
+            sliderImg: ['Spirit 1-2022.jpg', 'Spring Sonata 1-2022.jpg', 'HIJO signature.png'],
             allData: [],
             imgData: [],
 
@@ -102,7 +85,7 @@ export default {
     },
     setup() {
         return {
-            modules: [Navigation, Pagination],
+            modules: [Autoplay, Pagination, Navigation],
         }
     }
 }
@@ -112,6 +95,10 @@ export default {
 .swiper {
     width: 100%;
     height: 100%;
+}
+
+.mainSwiper {
+    width: 80% !important;
 }
 
 .swiper-slide {
@@ -132,11 +119,10 @@ export default {
     object-fit: cover;
 }
 
-.swiper {
+/* .swiper {
     width: 100%;
     height: 260px;
-    /* margin: 20px auto; */
-}
+} */
 
 .append-buttons {
     text-align: center;

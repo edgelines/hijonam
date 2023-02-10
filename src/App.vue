@@ -43,9 +43,14 @@
                         </a>
                         <a class="nav-link ms-4">
                             <router-link class="nav-font" to="/contact">Contact</router-link>
-
                         </a> -->
+
                     </div>
+                </div>
+                <div class="sns d-flex justify-content-end me-5">
+                    <img class="ms-4" src="./assets/facebook.png" width="20" />
+                    <img class="ms-4" src="./assets/instagram.png" width="20" />
+                    <img class="ms-4 me-5" src="./assets/mail.png" width="20" />
                 </div>
             </div>
         </nav>
@@ -55,10 +60,10 @@
             <router-view :ArtWorksImg="ArtWorksImg" />
         </div>
     </div>
-    <footer class="bg-light">
+    <!-- <footer class="bg-light">
         footer <br />
         instagram, kakao, facebook, youtube
-    </footer>
+    </footer> -->
 </template>
 
 <script>

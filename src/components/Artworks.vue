@@ -8,8 +8,8 @@
                 type: 'progressbar',
             }" :navigation="true" :modules="modules" class="mySwiper">
                 <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
-                    <div class="divImgList text-center" @click="btnData(classItem)">
-                        <img class="img-fluid" :src="'/img/' + classItem + '/' + classListImg[i]" />
+                    <div class="divImgList" @click="btnData(classItem)">
+                        <img style="height: 320px;" :src="'/img/' + classItem + '/' + classListImg[i]" />
                         <span>
                             {{ classItem }}
                         </span>
@@ -86,12 +86,8 @@
 
             <div class="row mt-4">
                 <!-- <div class="row d-flex align-items-end"> -->
-                <div class="row grid">
-
-                    <!-- <masonry :cols="3" :gutter="30">
-                        <div v-for="(item, index) in items" :key="index">Item: {{ index + 1}}</div>
-                    </masonry> -->
-                    <masonry-wall :items="imgList" :ssr-columns="3" :column-width="300" :gap="20">
+                <div class="row">
+                    <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="20">
                         <template #default="{ item, index }">
                             <div class="mb-2" @click="$router.push('/artworks/' + imgData[index].imgID)">
                                 <img class="img-fluid mb-2" :src="'/img/' + selectClass + '/' + item" />
@@ -213,13 +209,7 @@ export default {
 <style>
 .divImgList {
     width: 350px;
-    height: 200px;
-
-}
-
-.divImgDetail {
-    width: 350px;
-    height: 200px;
+    height: 350px;
 }
 
 .box {
