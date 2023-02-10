@@ -54,7 +54,7 @@ export default {
         ArtWorksImg: Object,
     },
     setup(props) {
-        console.log(props.Data)
+
         return {}
     }
 }

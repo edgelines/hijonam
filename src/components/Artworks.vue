@@ -1,6 +1,5 @@
 <template>
 
-    {{ Data }}
     <!-- Img Swiper -->
     <div class="row mt-5">
         <div class="col-3"></div>
@@ -19,8 +18,6 @@
             </swiper>
         </div>
     </div>
-
-
 
     <div class="row mt-5">
         <div class="col-1">
@@ -89,13 +86,27 @@
 
             <div class="row mt-4">
                 <!-- <div class="row d-flex align-items-end"> -->
-                <div class="row ">
-                    <div class="mb-4 col-6 col-md-4" v-for="(Item, i) in imgData" :key="Item"
+                <div class="row grid">
+
+                    <!-- <masonry :cols="3" :gutter="30">
+                        <div v-for="(item, index) in items" :key="index">Item: {{ index + 1}}</div>
+                    </masonry> -->
+                    <masonry-wall :items="imgList" :ssr-columns="10" :column-width="300" :gap="20">
+                        <template #default="{ item, index }">
+                            <div>
+                                <img class="img-fluid" :src="'/img/' + selectClass + '/' + item" />
+
+                                <span>{{ imgData[index].imgTitle }}</span>
+                            </div>
+                        </template>
+                    </masonry-wall>
+
+                    <!-- <div class="mb-4 col-6 col-md-4" v-for="(Item, i) in imgData" :key="Item"
                         @click="$router.push('/artworks/' + Item.imgID)">
                         <div>
                             <ArworksList :Data="Item" />
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
@@ -111,18 +122,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
-import ArworksDetail from './ArworksDetail.vue';
+
 import ArworksList from './Artworks/ArtworksList.vue';
 import VueSimpleRangeSlider from 'vue-simple-range-slider';
 import "vue-simple-range-slider/css";
 import { reactive, defineComponent } from "vue";
-
+import MasonryWall from '@yeger/vue-masonry-wall'
 import MultiRangeSlider from "multi-range-slider-vue";
 
 
 export default {
     components: {
-        Swiper, SwiperSlide, ArworksDetail, ArworksList,
+        Swiper, SwiperSlide, ArworksList, MasonryWall,
         VueSimpleRangeSlider, MultiRangeSlider
     },
     mounted() { this.loadData() },
@@ -151,6 +162,11 @@ export default {
             const filter = this.allData.filter(v => v.class == name)
             this.imgData = filter;
             this.selectClass = name;
+            var tmp = []
+            this.imgData.forEach((value) => {
+                tmp.push(value.fileName)
+            })
+            this.imgList = tmp;
             this.getMaxMin()
         },
         getMaxMin() {
@@ -186,7 +202,8 @@ export default {
             classListImg: [],
             selectClass: '',
 
-            tmpData: [1, 2, 3, 4, 5],
+            imgList: [],
+
             imgYearMinMax: [],
             showImgYear: '',
             imgID: '',
