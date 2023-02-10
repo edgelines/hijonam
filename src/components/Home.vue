@@ -43,6 +43,9 @@ import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
 export default {
     components: { Swiper, SwiperSlide, },
+    props: {
+
+    },
     mounted() {
         this.loadData()
         this.Exhibtions()

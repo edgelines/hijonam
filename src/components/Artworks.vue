@@ -1,7 +1,10 @@
 <template>
-    <div class="row">
-        <ArworksModal @closeModal="모달창상태 = false;" :모달창상태="모달창상태" :imgURL="imgURL" :imgID="imgID" :imgData="imgData" />
-        <div class="row mt-5">
+
+    {{ Data }}
+    <!-- Img Swiper -->
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-8">
             <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
                 type: 'progressbar',
             }" :navigation="true" :modules="modules" class="mySwiper">
@@ -15,40 +18,91 @@
                 </swiper-slide>
             </swiper>
         </div>
+    </div>
 
 
-        <div class="row">
-            <div class="col-3">
-                <span class="row ms-3"> Filtered by </span>
-                <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
-                <div class="row">
-                    <span class="col-2 text-start">{{ imgYearMinMax[0] }}</span>
+
+    <div class="row mt-5">
+        <div class="col-1">
+            <!-- Emtpy -->
+        </div>
+
+        <!-- Filter by -->
+        <div class="col-2 mt-5">
+            <span class="row mb-2 text-center"> Filter by </span>
+
+            <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
+            <div class="row">
+                <span class="col text-start">{{ imgYearMinMax[0] }}</span>
+                <span class="col text-end">{{ imgYearMinMax[1] }}</span>
+                <form class="box border">
                     <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
                         id="customRange2" @input="imgYearRange($event, selectClass)">
-                    <span class="col-2 text-end">{{ imgYearMinMax[1] }}</span>
-                </div>
-                <span class="col">{{ showImgYear }}</span>
 
-            </div>
+                    <!-- <VueSimpleRangeSlider style="width: 250px" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
+                            :logarithmic="true" v-model="imgYearMinMax" @input="imgYearRange($event, selectClass)"> -->
+                    <!-- <VueSimpleRangeSlider style="width: 250px" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
+                            :logarithmic="true" v-model="state.range"> -->
 
-            <div class="col-9">
-                <h4 class="text-start mb-3">
-                    {{ (imgData.length).toLocaleString('kr') }} : {{ selectClass }}
-                </h4>
+                    <!-- <template #prefix="{ value }">$</template> -->
+                    <!-- </VueSimpleRangeSlider>
+                        {{ state }} -->
 
-                <div class="row d-flex align-items-end">
-                    <div class="mb-4 col-6 col-md-3" v-for="(item, i) in imgData" :key="item">
-                        <div class="p-2"
-                            @click="모달창상태 = true; this.imgURL = '/img/' + item.class + '/' + item.fileName; this.imgID = i;">
-                            <img class="img-fluid mb-2 " :src="'/img/' + item.class + '/' + item.fileName" />
-                            <span> {{ item.imgTitle }} </span>
+                </form>
+                <!-- <button @click="setSelected(selectClass, $event)">검색</button> -->
+
+                <!-- <form class="box border">
+                        <div class="filterSlider">
+                            <input type="range" id="input-left" :min=imgYearMinMax[0] :max=imgYearMinMax[1] />
+                            <input type="range" id="input-right" :min=imgYearMinMax[0] :max=imgYearMinMax[1] />
+                            <div class="track">
+                                <div class="range"></div>
+                                <div class="thumb left"></div>
+                                <div class="thumb right"></div>
+                            </div>
+
                         </div>
-                    </div>
+                    </form> -->
+            </div>
+            <span class="col">{{ showImgYear }}</span>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <input type="range" class="form-range range-vertical" v-model="imgSizeH">
+                    <span v-text="imgSizeH"></span>
+                </div>
+                <div class="col-8">
+                    <input type="range" class="form-range" v-model="imgSizeW">
+                    <span v-text="imgSizeW"></span>
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Img List -->
+        <div class="col-8">
+            <div class="row">
+                <h4 class="text-start mb-4">
+                    {{ (imgData.length).toLocaleString('kr') }} {{ selectClass }} works
+                </h4>
+                <hr />
+            </div>
+
+            <div class="row mt-4">
+                <!-- <div class="row d-flex align-items-end"> -->
+                <div class="row ">
+                    <div class="mb-4 col-6 col-md-4" v-for="(Item, i) in imgData" :key="Item"
+                        @click="$router.push('/artworks/' + Item.imgID)">
+                        <div>
+                            <ArworksList :Data="Item" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </template>
 
 <script>
@@ -57,9 +111,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
-import ArworksModal from './Modal/ArworksModal.vue';
+import ArworksDetail from './ArworksDetail.vue';
+import ArworksList from './Artworks/ArtworksList.vue';
+import VueSimpleRangeSlider from 'vue-simple-range-slider';
+import "vue-simple-range-slider/css";
+import { reactive, defineComponent } from "vue";
+
+import MultiRangeSlider from "multi-range-slider-vue";
+
+
 export default {
-    components: { Swiper, SwiperSlide, ArworksModal },
+    components: {
+        Swiper, SwiperSlide, ArworksDetail, ArworksList,
+        VueSimpleRangeSlider, MultiRangeSlider
+    },
     mounted() { this.loadData() },
     methods: {
         loadData() {
@@ -95,31 +160,44 @@ export default {
             var Min = Math.min(...tmp)
             this.imgYearMinMax = [Min, Max]
         },
-        imgYearRange(event, name) {
-            const val = event.target.value;
-            this.showImgYear = event.target.value;
-            this.imgData = this.allData.filter(value => value.class == name & value.imgYear <= val)
+        imgYearRange(name) {
+            this.imgData = this.allData.filter(value =>
+                value.class == name &
+                value.imgYear >= imgYearMinMax[0] &
+                value.imgYear <= imgYearMinMax[1]
+            )
+            console.log(this.imgData);
         },
+        setSelected(name, event) {
+            const filter = this.allData.filter(v => v.class == name
+                // &
+                // v.imgYear >= this.state.range[0] &
+                // v.imgYear <= this.state.range[1]
+            )
+            this.imgData = filter;
+            console.log(event)
+        }
     },
     data() {
         return {
-            모달창상태: false,
-            allData: [],
-            imgData: [],
+            allData: '',
+            imgData: '',
             classList: [],
             classListImg: [],
             selectClass: '',
+
+            tmpData: [1, 2, 3, 4, 5],
             imgYearMinMax: [],
             showImgYear: '',
             imgID: '',
             imgURL: '',
+            imgSizeW: '',
+            imgSizeH: '',
+            state: reactive({ range: [2009, 2022] }),
+            modules: [Navigation, Pagination],
+            // state: reactive({ number: 1 })
         }
     },
-    setup() {
-        return {
-            modules: [Navigation, Pagination],
-        }
-    }
 }
 </script>
 
@@ -133,5 +211,35 @@ export default {
 .divImgDetail {
     width: 350px;
     height: 200px;
+}
+
+.box {
+    width: 300px;
+    height: 100px;
+}
+
+.filterSlider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+/* 
+input {
+    width: calc(100% - 2rem);
+    top: 3rem;
+    left: 1rem;
+    position: absolute;
+    border: none;
+} */
+
+.range-vertical {
+    transform: rotate(270deg);
+    width: 40%;
+
 }
 </style>

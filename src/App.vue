@@ -12,47 +12,47 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active">
-                            <router-link class="nav-font" to="/artist">Artist</router-link>
+                        <a class="nav-link active ms-4">
+                            <router-link class="nav-font" to="/artist">BIO</router-link>
                         </a>
-                        <a class="nav-link">
-                            <router-link class="nav-font" to="/artworks">Artworks</router-link>
+                        <a class="nav-link ms-4">
+                            <router-link class="nav-font" to="/artworks">ARTWORKS</router-link>
                         </a>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown ms-4">
                             <a class="nav-font nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Exhibtion
+                                EXHIBITION
                             </a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item">
-                                    <router-link class="nav-font" to="/exhibtion">Past Exhibtion</router-link>
+                                    <router-link class="nav-font" to="/exhibtion">Past Exhibition</router-link>
                                 </a>
                                 <a class="dropdown-item">
-                                    <router-link class="nav-font" to="/upcoming">Upcoming Exhibtion</router-link>
+                                    <router-link class="nav-font" to="/upcoming">Upcoming Exhibition</router-link>
                                 </a>
                             </ul>
                         </li>
-                        <a class="nav-link">
-                            <router-link class="nav-font" to="/portfolio">Portfolio</router-link>
+                        <a class="nav-link ms-4">
+                            <router-link class="nav-font" to="/portfolio">PORTFOLIO</router-link>
                         </a>
-                        <a class="nav-link">
+                        <!-- <a class="nav-link ms-4">
                             <router-link class="nav-font" to="/News">News Press</router-link>
                         </a>
-                        <a class="nav-link">
+                        <a class="nav-link ms-4">
                             <router-link class="nav-font" to="/pictures">Pictures</router-link>
                         </a>
-                        <a class="nav-link">
+                        <a class="nav-link ms-4">
                             <router-link class="nav-font" to="/contact">Contact</router-link>
 
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
         </nav>
     </header>
     <div id="wrapper">
-        <div class="container-xxl">
-            <router-view />
+        <div class="container-fluid">
+            <router-view :ArtWorksImg="ArtWorksImg" />
         </div>
     </div>
     <footer class="bg-light">
@@ -62,10 +62,24 @@
 </template>
 
 <script>
-
+import axios from 'axios'
+import { reactive, ref } from "vue";
 export default {
     name: 'App',
-    components: {}
+    components: {},
+
+    mounted() {
+        axios.get("/json/data.json").then((response) => {
+            this.ArtWorksImg = response.data
+
+        })
+    },
+    data() {
+        return {
+            ArtWorksImg: [],
+
+        }
+    }
 }
 </script>
 
