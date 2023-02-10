@@ -91,22 +91,15 @@
                     <!-- <masonry :cols="3" :gutter="30">
                         <div v-for="(item, index) in items" :key="index">Item: {{ index + 1}}</div>
                     </masonry> -->
-                    <masonry-wall :items="imgList" :ssr-columns="10" :column-width="300" :gap="20">
+                    <masonry-wall :items="imgList" :ssr-columns="3" :column-width="300" :gap="20">
                         <template #default="{ item, index }">
-                            <div>
-                                <img class="img-fluid" :src="'/img/' + selectClass + '/' + item" />
-
-                                <span>{{ imgData[index].imgTitle }}</span>
+                            <div class="mb-2" @click="$router.push('/artworks/' + imgData[index].imgID)">
+                                <img class="img-fluid mb-2" :src="'/img/' + selectClass + '/' + item" />
+                                <span class="fw-bolder">{{ imgData[index].imgTitle }}</span>
                             </div>
                         </template>
                     </masonry-wall>
 
-                    <!-- <div class="mb-4 col-6 col-md-4" v-for="(Item, i) in imgData" :key="Item"
-                        @click="$router.push('/artworks/' + Item.imgID)">
-                        <div>
-                            <ArworksList :Data="Item" />
-                        </div>
-                    </div> -->
                 </div>
 
             </div>
@@ -123,7 +116,6 @@ import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
 
-import ArworksList from './Artworks/ArtworksList.vue';
 import VueSimpleRangeSlider from 'vue-simple-range-slider';
 import "vue-simple-range-slider/css";
 import { reactive, defineComponent } from "vue";
@@ -133,7 +125,7 @@ import MultiRangeSlider from "multi-range-slider-vue";
 
 export default {
     components: {
-        Swiper, SwiperSlide, ArworksList, MasonryWall,
+        Swiper, SwiperSlide, MasonryWall,
         VueSimpleRangeSlider, MultiRangeSlider
     },
     mounted() { this.loadData() },
