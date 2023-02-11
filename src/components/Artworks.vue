@@ -3,7 +3,7 @@
     <div class="row mt-5">
         <div class="col-3"></div>
         <div class="col-8">
-            <Carousel :autoplay="3500" :wrap-around="true" :transition="7500" :itemsToShow="3" :modelValue="1">
+            <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="3" :modelValue="1">
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
                     <div class="d-flex flex-column" @click="btnData(classItem)">
                         <div class="col">

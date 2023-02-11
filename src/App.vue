@@ -131,7 +131,7 @@ footer {
 .nav-font {
     color: black !important;
     text-decoration: none !important;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Crimson Text', serif;
     font-weight: 600;
     font-size: 21px;
 }
@@ -139,7 +139,7 @@ footer {
 .nav-font-home {
     color: black !important;
     text-decoration: none !important;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Crimson Text', serif;
     font-weight: 800;
     font-size: 30px;
 }
