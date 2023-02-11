@@ -1,7 +1,7 @@
 <template>
 
     <div class="row mt-5">
-        <Carousel :autoplay="3500" :wrap-around="true" :transition="7500">
+        <Carousel :autoplay="4000" :wrap-around="true" :transition="15000">
             <Slide v-for="(item, i) in sliderImg" :key="item">
                 <div class="d-flex align-self-center flex-wrap mt-2">
                     <img class="d-flex align-self-center flex-wrap" :src="'/img/Main/' + item" />
