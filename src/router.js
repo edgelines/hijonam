@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Home from './components/Home.vue';
-import Artist from './components/Artist.vue';
+import Bio from './components/Bio.vue';
 import Artworks from './components/Artworks.vue';
 import ArworksDetail from "./components/ArworksDetail.vue";
 import Exhibtion from './components/Exhibtion.vue';
@@ -14,7 +14,7 @@ import Test from './components/Test.vue'
 
 const routes = [
     { path: "/", component: Home, },
-    { path: "/artist", component: Artist, },
+    { path: "/bio", component: Bio, },
     { path: "/artworks", component: Artworks, },
     { path: "/artworks/:id(\\d+)", component: ArworksDetail, },
 

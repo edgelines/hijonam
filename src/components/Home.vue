@@ -1,21 +1,15 @@
 <template>
 
     <div class="row mt-5">
-        <Carousel :autoplay="2000" :wrap-around="true" :transition="5000">
+        <Carousel :autoplay="3500" :wrap-around="true" :transition="7500">
             <Slide v-for="(item, i) in sliderImg" :key="item">
-                <div class="d-flex align-self-center flex-wrap mt-5">
+                <div class="d-flex align-self-center flex-wrap mt-2">
                     <img class="d-flex align-self-center flex-wrap" :src="'/img/Main/' + item" />
                 </div>
             </Slide>
-            <!-- <template #addons>
-            <Pagination />
-        </template> -->
         </Carousel>
     </div>
     <!-- class="d-flex justify-content-center" -->
-
-
-
 
 </template>
 
@@ -30,60 +24,14 @@ export default {
     props: {
 
     },
-    mounted() {
-        this.loadData()
-        this.Exhibtions()
-    },
     methods: {
-        loadData() {
-            axios.get("/json/data.json").then((response) => {
-                var tmp = [];
-                this.homeArtworks = response.data.filter(v => v.category == 'Artworks')
-                this.homeExhibtions = response.data.filter(v => v.category == 'Exhibtions')
-
-                this.homeArtworks.forEach((value, index, array) => { tmp.push(value.class); })
-                var set = new Set(tmp)
-                var newArr = [...set]
-                this.classList = newArr
-                newArr.forEach((value) => { this.mainImg(this.homeArtworks, value) })
-            })
-        },
-        mainImg(df, name) {
-            var filter = df.filter(v => v.class == name)
-            this.classListImg.push(filter[0].fileName)
-        },
-
-        Exhibtions() {
-            axios.get("/json/data.json").then((response) => {
-                var tmp = [];
-                this.homeExhibtions = response.data.filter(v => v.category == 'Exhibtions')
-
-                this.homeExhibtions.forEach((value, index, array) => { tmp.push(value.class); })
-                var set = new Set(tmp)
-                var newArr = [...set]
-                this.classListEx = newArr
-                newArr.forEach((value) => {
-                    var filter = this.homeExhibtions.filter(v => v.class == value)
-                    this.classListImgEx.push(filter[0].fileName)
-                })
-            })
-        }
 
     },
     data() {
         return {
 
-            sliderImg: ['Spirit 1-2022.jpg', 'Spring Sonata 1-2022.jpg', 'HIJO signature.png'],
-            allData: [],
-            imgData: [],
+            sliderImg: ['Spirit 1-2022.jpg', 'Spring Sonata 1-2022.jpg', 'Spain Ronda 2-2022.jpg'],
 
-            homeArtworks: [],
-            classList: [],
-            classListImg: [],
-
-            homeExhibtions: [],
-            classListEx: [],
-            classListImgEx: [],
         }
     },
     setup() {

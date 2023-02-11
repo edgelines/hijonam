@@ -2,26 +2,31 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand">
-                    <router-link class="nav-font" to="/">Hijo Nam</router-link>
+                <div class="ms-5"></div>
+                <div class="ms-5"></div>
+                <a class="navbar-brand ms-5">
+                    <router-link class="nav-font-home" to="/">HIJO NAM</router-link>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="ms-5"></div>
+                <div class="ms-5"></div>
+                <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active ms-4">
-                            <router-link class="nav-font" to="/artist">BIO</router-link>
+                        <a class="nav-link active ms-5">
+                            <router-link class="nav-font" to="/bio">BIO</router-link>
                         </a>
-                        <a class="nav-link ms-4">
+                        <a class="nav-link ms-5">
                             <router-link class="nav-font" to="/artworks">ARTWORKS</router-link>
                         </a>
-                        <li class="nav-item dropdown ms-4">
-                            <a class="nav-font nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                EXHIBITION
+
+                        <li class="nav-item dropdown ms-5">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <span class="nav-font">EXHIBITION</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item">
@@ -32,7 +37,7 @@
                                 </a>
                             </ul>
                         </li>
-                        <a class="nav-link ms-4">
+                        <a class="nav-link ms-5">
                             <router-link class="nav-font" to="/portfolio">PORTFOLIO</router-link>
                         </a>
                         <!-- <a class="nav-link ms-4">
@@ -48,9 +53,12 @@
                     </div>
                 </div>
                 <div class="sns d-flex justify-content-end me-5">
-                    <img class="ms-4" src="./assets/facebook.png" width="20" />
-                    <img class="ms-4" src="./assets/instagram.png" width="20" />
-                    <img class="ms-4 me-5" src="./assets/mail.png" width="20" />
+                    <img class="me-5" src="./assets/facebook.png" width="20" />
+                    <img class="me-5" src="./assets/instagram.png" width="20" />
+                    <img class="me-5" src="./assets/mail.png" width="20" />
+                    <div class="me-5"></div>
+                    <div class="me-5"></div>
+                    <div class="me-5"></div>
                 </div>
             </div>
         </nav>
@@ -91,6 +99,9 @@ export default {
 <style>
 /* @import '../node_modules/bootstrap/scss/bootstrap'; */
 
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Nunito+Sans:wght@600;700;900&display=swap');
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -120,6 +131,17 @@ footer {
 .nav-font {
     color: black !important;
     text-decoration: none !important;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+}
+
+.nav-font-home {
+    color: black !important;
+    text-decoration: none !important;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
 }
 
 /* $container-max-widths: (

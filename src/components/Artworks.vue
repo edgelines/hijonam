@@ -3,19 +3,36 @@
     <div class="row mt-5">
         <div class="col-3"></div>
         <div class="col-8">
-            <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
+            <Carousel :autoplay="3500" :wrap-around="true" :transition="7500" :itemsToShow="3" :modelValue="1">
+                <Slide v-for="(classItem, i) in classList" :key="classItem">
+                    <div class="d-flex flex-column" @click="btnData(classItem)">
+                        <div class="col">
+                            <img style="width: 300px; height: 300px;"
+                                :src="'/img/' + classItem + '/' + classListImg[i]" />
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col fw-bolder">
+                                {{ classItem }}
+                            </div>
+                        </div>
+                    </div>
+                </Slide>
+            </Carousel>
+
+            <!-- <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
                 type: 'progressbar',
             }" :navigation="true" :modules="modules" class="mySwiper">
                 <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
-                    <div class="divImgList" @click="btnData(classItem)">
-                        <img style="height: 320px;" :src="'/img/' + classItem + '/' + classListImg[i]" />
-                        <span>
-                            {{ classItem }}
-                        </span>
+                    <div class="row" @click="btnData(classItem)">
+                        <img style="width: 300px; height: 300px;" :src="'/img/' + classItem + '/' + classListImg[i]" />
+                    </div>
+                    <div class="row">
+                        {{ classItem }}
                     </div>
                 </swiper-slide>
-            </swiper>
+            </swiper> -->
         </div>
+        <div class="col-1"></div>
     </div>
 
     <div class="row mt-5">
@@ -42,7 +59,7 @@
                 </form>
             </div>
 
-            <div class="row mt-5">
+            <!-- <div class="row mt-5">
                 <div class="col">
                     <input type="range" class="form-range range-vertical" v-model="imgSizeH">
                     <span v-text="imgSizeH"></span>
@@ -51,7 +68,7 @@
                     <input type="range" class="form-range" v-model="imgSizeW">
                     <span v-text="imgSizeW"></span>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- Img List -->
@@ -67,11 +84,10 @@
                 <!-- <div class="row d-flex align-items-end"> -->
                 <div class="row">
                     <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="20">
-                        <!-- <masonry-wall :items="imgData.fileName" :ssr-columns="1" :column-width="300" :gap="20"> -->
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
-                                <img class="img-fluid mb-3" :src="'/img/' + selectClass + '/' + item" />
-                                <span class="fw-bolder">{{ imgData[index].imgTitle }}</span>
+                                <img class="img-fluid mb-1" :src="'/img/' + selectClass + '/' + item" />
+                                <div class="fw-bolder text-start">{{ imgData[index].imgTitle }}</div>
                             </div>
                         </template>
                     </masonry-wall>
@@ -86,10 +102,13 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation, Pagination } from 'swiper';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide } from 'vue3-carousel'
+
+// import { Swiper, SwiperSlide } from 'swiper/vue';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
 
 import RangeSlider from 'vue-simple-range-slider';
@@ -101,8 +120,10 @@ import MasonryWall from '@yeger/vue-masonry-wall'
 
 export default {
     components: {
-        Swiper, SwiperSlide, MasonryWall,
+        // Swiper, SwiperSlide,
+        MasonryWall,
         RangeSlider,
+        Carousel, Slide,
         // MultiRangeSlider
     },
     mounted() { this.loadData() },
@@ -144,6 +165,9 @@ export default {
             var Max = Math.max(...tmp)
             var Min = Math.min(...tmp)
             this.imgYearMinMax = [Min, Max]
+            if (Min == Max) {
+                return Min = Max - 1
+            }
             this.imgRange = [Min, Max]
             this.imgMin = Min
             this.imgMax = Max
@@ -166,7 +190,7 @@ export default {
     },
     data() {
         return {
-            modules: [Navigation, Pagination],
+            // modules: [Navigation, Pagination],
 
             allData: '',
             imgData: '',
@@ -192,11 +216,6 @@ export default {
 </script>
 
 <style>
-.divImgList {
-    width: 350px;
-    height: 350px;
-}
-
 .box {
     width: 300px;
     height: 100px;

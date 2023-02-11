@@ -9,7 +9,6 @@ import DataTablesLib from 'datatables.net';
 import router from './router'
 import jQuery from 'jquery'
 import MasonryWall from '@yeger/vue-masonry-wall'
-import * as uiv from 'uiv'
 
 const app = createApp(App);
 
@@ -19,7 +18,6 @@ global.$ = jQuery;
 app.use($);
 app.use(router);
 
-app.use(uiv)
 app.use(MasonryWall)
 
 DataTable.use(DataTablesLib);
