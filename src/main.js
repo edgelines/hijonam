@@ -11,21 +11,18 @@ import jQuery from 'jquery'
 import MasonryWall from '@yeger/vue-masonry-wall'
 import * as uiv from 'uiv'
 
-
-// import VueMasonry from 'vue-masonry-css'
-import VueFlux from 'vue-flux'
-
 const app = createApp(App);
+
+
 
 global.$ = jQuery;
 app.use($);
 app.use(router);
-app.use(VueFlux);
+
 app.use(uiv)
-// app.use(VueMasonry);
 app.use(MasonryWall)
 
 DataTable.use(DataTablesLib);
 app.component("DataTable", DataTable);
-
+// app.component('VueSlider', VueSlider)
 app.mount('#app')

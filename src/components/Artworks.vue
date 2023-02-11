@@ -1,5 +1,4 @@
 <template>
-
     <!-- Img Swiper -->
     <div class="row mt-5">
         <div class="col-3"></div>
@@ -30,38 +29,18 @@
 
             <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
             <div class="row">
-                <span class="col text-start">{{ imgYearMinMax[0] }}</span>
-                <span class="col text-end">{{ imgYearMinMax[1] }}</span>
-                <form class="box border">
-                    <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
-                        id="customRange2" @input="imgYearRange($event, selectClass)">
-
-                    <!-- <VueSimpleRangeSlider style="width: 250px" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
-                            :logarithmic="true" v-model="imgYearMinMax" @input="imgYearRange($event, selectClass)"> -->
-                    <!-- <VueSimpleRangeSlider style="width: 250px" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
-                            :logarithmic="true" v-model="state.range"> -->
-
-                    <!-- <template #prefix="{ value }">$</template> -->
-                    <!-- </VueSimpleRangeSlider>
-                        {{ state }} -->
-
+                <!-- <span class="col text-start">{{ imgYearMinMax[0] }}</span>
+                <span class="col text-end">{{ imgYearMinMax[1] }}</span> -->
+                <form class="box">
+                    <!-- <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
+                        id="customRange2" @input="imgYearRange($event, selectClass)"> -->
+                    <!-- imgYearRange(selectClass) -->
+                    <RangeSlider v-model="imgRange" style="width: 100%" bar-color="#bebefe" :min="imgMin" :max="imgMax"
+                        :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)">
+                        <!-- <template #suffix>$</template> -->
+                    </RangeSlider>
                 </form>
-                <!-- <button @click="setSelected(selectClass, $event)">검색</button> -->
-
-                <!-- <form class="box border">
-                        <div class="filterSlider">
-                            <input type="range" id="input-left" :min=imgYearMinMax[0] :max=imgYearMinMax[1] />
-                            <input type="range" id="input-right" :min=imgYearMinMax[0] :max=imgYearMinMax[1] />
-                            <div class="track">
-                                <div class="range"></div>
-                                <div class="thumb left"></div>
-                                <div class="thumb right"></div>
-                            </div>
-
-                        </div>
-                    </form> -->
             </div>
-            <span class="col">{{ showImgYear }}</span>
 
             <div class="row mt-5">
                 <div class="col">
@@ -88,6 +67,7 @@
                 <!-- <div class="row d-flex align-items-end"> -->
                 <div class="row">
                     <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="20">
+                        <!-- <masonry-wall :items="imgData.fileName" :ssr-columns="1" :column-width="300" :gap="20"> -->
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
                                 <img class="img-fluid mb-3" :src="'/img/' + selectClass + '/' + item" />
@@ -112,17 +92,18 @@ import 'swiper/css/navigation';
 import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
 
-import VueSimpleRangeSlider from 'vue-simple-range-slider';
-import "vue-simple-range-slider/css";
+import RangeSlider from 'vue-simple-range-slider';
+import 'vue-simple-range-slider/css';
 import { reactive, defineComponent } from "vue";
 import MasonryWall from '@yeger/vue-masonry-wall'
-import MultiRangeSlider from "multi-range-slider-vue";
+// import MultiRangeSlider from "multi-range-slider-vue";
 
 
 export default {
     components: {
         Swiper, SwiperSlide, MasonryWall,
-        VueSimpleRangeSlider, MultiRangeSlider
+        RangeSlider,
+        // MultiRangeSlider
     },
     mounted() { this.loadData() },
     methods: {
@@ -163,27 +144,30 @@ export default {
             var Max = Math.max(...tmp)
             var Min = Math.min(...tmp)
             this.imgYearMinMax = [Min, Max]
+            this.imgRange = [Min, Max]
+            this.imgMin = Min
+            this.imgMax = Max
         },
         imgYearRange(name) {
-            this.imgData = this.allData.filter(value =>
-                value.class == name &
-                value.imgYear >= imgYearMinMax[0] &
-                value.imgYear <= imgYearMinMax[1]
-            )
-            console.log(this.imgData);
+            var filter = this.allData.filter(value => value.class == name)
+            filter = filter.filter(value => this.imgRange[0] <= value.imgYear &
+                value.imgYear <= this.imgRange[1])
+            this.imgData = filter
+
+            var tmp = []
+            this.imgData.forEach((value) => {
+                tmp.push(value.fileName)
+            })
+            this.imgList = tmp;
         },
-        setSelected(name, event) {
-            const filter = this.allData.filter(v => v.class == name
-                // &
-                // v.imgYear >= this.state.range[0] &
-                // v.imgYear <= this.state.range[1]
-            )
-            this.imgData = filter;
-            console.log(event)
-        }
+    },
+    props: {
+        ArtWorksImg: Object,
     },
     data() {
         return {
+            modules: [Navigation, Pagination],
+
             allData: '',
             imgData: '',
             classList: [],
@@ -193,13 +177,14 @@ export default {
             imgList: [],
 
             imgYearMinMax: [],
-            showImgYear: '',
-            imgID: '',
-            imgURL: '',
+            imgMin: '',
+            imgMax: '',
+            imgRange: '',
+
+
             imgSizeW: '',
             imgSizeH: '',
-            state: reactive({ range: [2009, 2022] }),
-            modules: [Navigation, Pagination],
+
             // state: reactive({ number: 1 })
         }
     },

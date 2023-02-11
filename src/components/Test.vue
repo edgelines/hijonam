@@ -1,26 +1,44 @@
 <template>
-    <Carousel :autoplay="2000" :wrap-around="true" :transition="10000">
-        <Slide v-for="slide in 10" :key="slide">
-            <div class="carousel__item">{{ slide }}</div>
-        </Slide>
-
-        <template #addons>
-            <Pagination />
-        </template>
-    </Carousel>
+    <div class="col-6">
+        <RangeSlider v-model="state.value" style="width: 100%" exponential :max="1000000000" bar-color="#bebffe"
+            :min="100">
+            <!-- <template #suffix>$</template> -->
+        </RangeSlider>
+        <RangeSlider v-model="value2" style="width: 100%" exponential :max="1000000000" bar-color="#bebffe" :min="100">
+            <!-- <template #suffix>$</template> -->
+        </RangeSlider>
+    </div>
 </template>
 
 <script>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
-import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import RangeSlider from 'vue-simple-range-slider';
+import 'vue-simple-range-slider/css';
+import { reactive } from 'vue';
 
 export default {
     name: 'App',
     components: {
-        Carousel,
-        Slide,
-        Pagination,
+        RangeSlider
     },
+    methods: {
+
+    },
+    data() {
+        return {
+            value2: [2000, 5000],
+        }
+    },
+    setup() {
+        const state = reactive({
+            value: [1000, 5000],
+        });
+        return {
+            state,
+        }
+    },
+    watch: {
+
+    }
+
 }
 </script>
