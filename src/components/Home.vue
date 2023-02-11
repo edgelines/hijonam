@@ -1,29 +1,32 @@
 <template>
 
     <div class="row mt-5">
-        <swiper :spaceBetween="100" :centeredSlides="true" :autoplay="{
-            delay: 7000, disableOnInteraction: false,
-        }" :pagination="{
-    clickable: true,
-}" :modules="modules" :pauseOnMouseEnter="true" class="mainSwiper">
-            <swiper-slide v-for="(item, i) in sliderImg" :key="item">
+        <Carousel :autoplay="2000" :wrap-around="true" :transition="5000">
+            <Slide v-for="(item, i) in sliderImg" :key="item">
                 <div class="d-flex align-self-center flex-wrap mt-5">
                     <img class="d-flex align-self-center flex-wrap" :src="'/img/Main/' + item" />
                 </div>
-            </swiper-slide>
-        </swiper>
+            </Slide>
+            <!-- <template #addons>
+            <Pagination />
+        </template> -->
+        </Carousel>
     </div>
     <!-- class="d-flex justify-content-center" -->
+
+
+
+
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Autoplay, Pagination, Navigation } from 'swiper';
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
+
+
 import axios from 'axios'
 export default {
-    components: { Swiper, SwiperSlide, },
+    components: { Carousel, Slide, },
     props: {
 
     },
@@ -85,7 +88,7 @@ export default {
     },
     setup() {
         return {
-            modules: [Autoplay, Pagination, Navigation],
+
         }
     }
 }

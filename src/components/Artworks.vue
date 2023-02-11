@@ -89,8 +89,8 @@
                 <div class="row">
                     <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="20">
                         <template #default="{ item, index }">
-                            <div class="mb-2" @click="$router.push('/artworks/' + imgData[index].imgID)">
-                                <img class="img-fluid mb-2" :src="'/img/' + selectClass + '/' + item" />
+                            <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
+                                <img class="img-fluid mb-3" :src="'/img/' + selectClass + '/' + item" />
                                 <span class="fw-bolder">{{ imgData[index].imgTitle }}</span>
                             </div>
                         </template>
