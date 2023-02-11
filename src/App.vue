@@ -99,11 +99,11 @@ export default {
 <style>
 /* @import '../node_modules/bootstrap/scss/bootstrap'; */
 
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@700&family=Crimson+Text&family=Nunito+Sans:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Nunito+Sans:wght@600;700;900&display=swap');
 
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Crimson Text', serif, Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -132,7 +132,7 @@ footer {
     color: black !important;
     text-decoration: none !important;
     font-family: 'Crimson Text', serif;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 21px;
 }
 
