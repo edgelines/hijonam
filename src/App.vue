@@ -1,10 +1,8 @@
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-white">
+        <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <div class="ms-5"></div>
-                <div class="ms-5"></div>
-                <a class="navbar-brand ms-5">
+                <a class="navbar-brand">
                     <router-link class="nav-font-home" to="/">HIJO NAM</router-link>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -12,18 +10,16 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="ms-5"></div>
-                <div class="ms-5"></div>
-                <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
+                <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link active ms-5">
+                        <a class="nav-link active mt-2">
                             <router-link class="nav-font" to="/bio">BIO</router-link>
                         </a>
-                        <a class="nav-link ms-5">
+                        <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/artworks">ARTWORKS</router-link>
                         </a>
 
-                        <li class="nav-item dropdown ms-5">
+                        <li class="nav-item dropdown mt-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <span class="nav-font">EXHIBITION</span>
@@ -37,7 +33,7 @@
                                 </a>
                             </ul>
                         </li>
-                        <a class="nav-link ms-5">
+                        <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/portfolio">PORTFOLIO</router-link>
                         </a>
                         <!-- <a class="nav-link ms-4">
@@ -52,13 +48,10 @@
 
                     </div>
                 </div>
-                <div class="sns d-flex justify-content-end me-5">
-                    <img class="me-5" src="./assets/facebook.png" width="20" />
-                    <img class="me-5" src="./assets/instagram.png" width="20" />
-                    <img class="me-5" src="./assets/mail.png" width="20" />
-                    <div class="me-5"></div>
-                    <div class="me-5"></div>
-                    <div class="me-5"></div>
+                <div class="snsBtn d-flex justify-content-end mt-2">
+                    <img class="me-5 mb-1" src="./assets/facebook.png" width="20" height="20" />
+                    <img class="me-5 mb-1" src="./assets/instagram.png" width="20" />
+                    <img class="me-5 mb-1" src="./assets/mail.png" width="20" />
                 </div>
             </div>
         </nav>
@@ -128,20 +121,51 @@ footer {
     transform: translateY(-100%); */
 }
 
-.nav-font {
-    color: black !important;
-    text-decoration: none !important;
-    font-family: 'Crimson Text', serif;
-    /* font-weight: 600; */
-    font-size: 19px;
+@media (max-width : 1099px) {
+    .nav-font {
+        color: black !important;
+        text-decoration: none !important;
+        font-family: 'Crimson Text', serif;
+    }
+
+    .nav-font-home {
+        color: black !important;
+        text-decoration: none !important;
+        font-family: 'Crimson Text', serif;
+        font-weight: 800;
+    }
+
+    .snsBtn {
+        display: none;
+    }
 }
 
-.nav-font-home {
-    color: black !important;
-    text-decoration: none !important;
-    font-family: 'Crimson Text', serif;
-    font-weight: 800;
-    font-size: 32px;
+
+@media (min-width : 1100px) {
+    .nav-font {
+        color: black !important;
+        text-decoration: none !important;
+        font-family: 'Crimson Text', serif;
+        /* font-weight: 600; */
+        font-size: 20px;
+        margin-top: 50px !important;
+        margin-right: 50px;
+    }
+
+    .nav-font-home {
+        color: black !important;
+        text-decoration: none !important;
+        font-family: 'Crimson Text', serif;
+        font-weight: 800;
+        font-size: 33px;
+        margin-left: 90px;
+        margin-right: 370px;
+    }
+
+    .sns {
+        margin-right: 200px;
+    }
+
 }
 
 /* $container-max-widths: (

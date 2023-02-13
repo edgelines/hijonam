@@ -1,55 +1,58 @@
 <template>
-    <div class="container">
-        <div class="row mt-5">
-
-            <h3>{{ title }}</h3>
+    <div class="row mt-5">
+        <div class="col-sm-0 col-md-0 col-lg-1">
 
         </div>
-        <div class="row mt-5">
-            <!-- <div class="col-sm-12 col-md-4 col-lg-3">
+        <!-- <div class="col-sm-12 col-md-4 col-lg-3">
                 <img :src="profileIMG" class="img-fluid" />
             </div> -->
-            <div class="col-sm-12 col-md-4 col-lg-3">
-                <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-lg btn-outline-light customBtn"
-                        @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo Exhibitions</button>
-                    <button type="button" class="btn btn-lg btn-outline-light customBtn"
-                        @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
-                        Exhibitions</button>
-                    <button type="button" class="btn btn-lg btn-outline-light customBtn"
-                        @click="btnData('Awards'); this.title = 'Awards & Professional Affiliations'">Awards</button>
-                    <button type="button" class="btn btn-lg btn-outline-light customBtn"
-                        @click="btnData('Published Articles'); this.title = 'Published Articles'">Published
-                        Articles</button>
-                    <button type="button" class="btn btn-lg btn-outline-light customBtn"
-                        @click="btnData('Work Experiences'); this.title = 'Work Experiences'">Work
-                        Experiences</button>
-                </div>
-
+        <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
+            <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo Exhibitions</button>
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
+                    Exhibitions</button>
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Awards'); this.title = 'Awards & Professional Affiliations'">Awards</button>
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Published Articles'); this.title = 'Published Articles'">Published
+                    Articles</button>
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Work Experiences'); this.title = 'Work Experiences'">Work
+                    Experiences</button>
             </div>
-            <div class="col-sm-12 col-md-8 col-lg-9">
 
-                <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
-                    <thead>
-                        <tr>
-                            <th class="text-center d-none" style="width: 100px;">year</th>
-                            <th class="text-center d-none" style="width: 500px;">title</th>
-                            <th class="text-center d-none" style="width: 250px;">location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </DataTable>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-7">
+            <div class="row mb-5 text-start">
+                <h3>{{ title }}</h3>
             </div>
+            <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
+                <thead>
+                    <tr>
+                        <th class="text-center d-none" style="width: 100px;">year</th>
+                        <th class="text-center d-none" style="width: 500px;">title</th>
+                        <th class="text-center d-none" style="width: 250px;">location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </DataTable>
+        </div>
+        <div class="col-sm-0 col-md-0 col-lg-1">
+
         </div>
     </div>
+
 
 </template>
 
 <script>
+import { classAccessorProperty } from '@babel/types'
 import axios from 'axios'
 export default {
-    components: {},
+    components: { classAccessorProperty },
     mounted() {
         this.btnData('Solo Exhibitions')
     },
@@ -89,8 +92,11 @@ export default {
     font-size: 18px;
 }
 
-.customBtn {
-    color: black;
-    /* background-color: white !important; */
+
+@media (min-width : 1100px) {
+    .bioBtn {
+        margin-top: 85px;
+    }
+
 }
 </style>
