@@ -101,12 +101,9 @@ export default {
         height: auto;
     }
 
-    /* 
     .thumbnail {
-        width: 200px;
-        height: auto;
-        margin-bottom: 100px;
-    } */
+        z-index: 3;
+    }
 }
 
 @media (max-width : 1099px) {
@@ -115,12 +112,9 @@ export default {
         height: auto;
     }
 
-    /* 
     .thumbnail {
-        width: 200px;
-        height: auto;
-        margin-bottom: 100px;
-    } */
+        z-index: 3;
+    }
 }
 
 
@@ -132,6 +126,7 @@ export default {
     }
 
     .thumbnail {
+        z-index: 3;
         /* width: 230px; */
         margin-top: 0px;
         /* margin-left: 180px; */
