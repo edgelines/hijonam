@@ -1,8 +1,6 @@
 <template>
     <div class="row mt-5">
-        <div class="col-sm-0 col-md-0 col-lg-1">
 
-        </div>
         <!-- <div class="col-sm-12 col-md-4 col-lg-3">
                 <img :src="profileIMG" class="img-fluid" />
             </div> -->
@@ -24,7 +22,7 @@
             </div>
 
         </div>
-        <div class="col-sm-12 col-md-8 col-lg-7">
+        <div class="col-sm-12 col-md-8 col-lg-8">
             <div class="row mb-5 text-start">
                 <h3>{{ title }}</h3>
             </div>
@@ -40,9 +38,7 @@
                 </tbody>
             </DataTable>
         </div>
-        <div class="col-sm-0 col-md-0 col-lg-1">
 
-        </div>
     </div>
 
 

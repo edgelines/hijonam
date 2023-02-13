@@ -1,14 +1,12 @@
 <template>
     <!-- Img Swiper -->
     <div class="row mt-5">
-        <div class="col-3"></div>
-        <div class="col-8">
-            <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="3" :modelValue="1">
+        <div class="col">
+            <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="5" :modelValue="2">
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
                     <div class="d-flex flex-column" @click="btnData(classItem)">
                         <div class="col">
-                            <img style="width: 300px; height: 300px;"
-                                :src="'/img/' + classItem + '/' + classListImg[i]" />
+                            <img class="artworksCategory" :src="'/img/' + classItem + '/' + classListImg[i]" />
                         </div>
                         <div class="row mt-1">
                             <div class="col fw-bolder">
@@ -18,21 +16,7 @@
                     </div>
                 </Slide>
             </Carousel>
-
-            <!-- <swiper :slidesPerView="3" :spaceBetween="30" :pagination="{
-                type: 'progressbar',
-            }" :navigation="true" :modules="modules" class="mySwiper">
-                <swiper-slide v-for="(classItem, i) in classList" :key="classItem">
-                    <div class="row" @click="btnData(classItem)">
-                        <img style="width: 300px; height: 300px;" :src="'/img/' + classItem + '/' + classListImg[i]" />
-                    </div>
-                    <div class="row">
-                        {{ classItem }}
-                    </div>
-                </swiper-slide>
-            </swiper> -->
         </div>
-        <div class="col-1"></div>
     </div>
 
     <div class="row mt-5">
@@ -83,7 +67,7 @@
             <div class="row mt-4">
                 <!-- <div class="row d-flex align-items-end"> -->
                 <div class="row">
-                    <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="20">
+                    <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="40">
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
                                 <img class="img-fluid mb-1" :src="'/img/' + selectClass + '/' + item" />
@@ -243,6 +227,29 @@ input {
 .range-vertical {
     transform: rotate(270deg);
     width: 40%;
+
+}
+
+@media (max-width : 600px) {
+    .artworksCategory {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width : 1099px) {
+    .artworksCategory {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+
+@media (min-width : 1100px) {
+    .artworksCategory {
+        width: 300px;
+        height: 300px;
+    }
 
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid">
                 <a class="navbar-brand">
                     <router-link class="nav-font-home" to="/">HIJO NAM</router-link>
@@ -159,7 +159,7 @@ footer {
         font-weight: 800;
         font-size: 33px;
         margin-left: 90px;
-        margin-right: 370px;
+        margin-right: 220px;
     }
 
     .sns {
