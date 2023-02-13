@@ -6,7 +6,7 @@
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
                     <div class="d-flex flex-column" @click="btnData(classItem)">
                         <div class="col">
-                            <img class="artworksCategory" :src="'/img/' + classItem + '/' + classListImg[i]" />
+                            <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i][0]" />
                         </div>
                         <div class="row mt-1">
                             <div class="col imgTilteFont">
@@ -69,7 +69,7 @@
                     <masonry-wall :items="imgList" :ssr-columns="1" :column-width="420" :gap="40">
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
-                                <img class="img-fluid mb-1" :src="'/img/' + selectClass + '/' + item" />
+                                <img class="img-fluid mb-1" :src="'/img/Artworks/' + item[0]" />
                                 <div class="imgTilteFont text-start">{{ imgData[index].imgTitle }}</div>
                             </div>
                         </template>
@@ -112,9 +112,10 @@ export default {
     mounted() { this.loadData() },
     methods: {
         loadData() {
-            axios.get("/json/data.json").then((response) => {
+            axios.get("/json/Artworks.json").then((response) => {
                 var tmp = [], tmpImg = [];
-                this.allData = response.data.filter(v => v.category == 'Artworks')
+                this.allData = response.data
+                // this.allData = response.data.filter(v => v.category == 'Artworks')
                 this.allData.forEach((value, index, array) => { tmp.push(value.class); })
                 const set = new Set(tmp)
                 const newArr = [...set]

@@ -75,7 +75,7 @@ export default {
     components: {},
 
     mounted() {
-        axios.get("/json/data.json").then((response) => {
+        axios.get("/json/Artworks.json").then((response) => {
             this.ArtWorksImg = response.data
 
         })
