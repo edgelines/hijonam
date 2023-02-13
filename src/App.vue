@@ -1,6 +1,6 @@
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-white">
             <div class="container-fluid">
                 <div class="ms-5"></div>
                 <div class="ms-5"></div>
@@ -133,7 +133,7 @@ footer {
     text-decoration: none !important;
     font-family: 'Crimson Text', serif;
     /* font-weight: 600; */
-    font-size: 21px;
+    font-size: 19px;
 }
 
 .nav-font-home {
@@ -141,7 +141,7 @@ footer {
     text-decoration: none !important;
     font-family: 'Crimson Text', serif;
     font-weight: 800;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 /* $container-max-widths: (

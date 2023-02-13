@@ -8,7 +8,7 @@
                 <img id="imgData"
                     :src="'/img/' + ArtWorksImg[$route.params.id].class + '/' + ArtWorksImg[$route.params.id].fileName" />
             </div>
-            <div class="col-2 text-start mt-3 ">
+            <div class="col-3 text-start mt-3 ">
 
                 <h2 class="fw-900">{{ ArtWorksImg[$route.params.id].imgTitle }}</h2>
 
@@ -59,7 +59,7 @@ export default {
 }
 
 #imgData {
-    width: 70%;
+    width: 50%;
     height: auto;
 }
 </style>
