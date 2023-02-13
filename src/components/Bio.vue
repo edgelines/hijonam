@@ -1,5 +1,5 @@
 <template>
-    <div class="row mt-5">
+    <div class="row Bio-Div">
 
         <!-- <div class="col-sm-12 col-md-4 col-lg-3">
                 <img :src="profileIMG" class="img-fluid" />
@@ -92,6 +92,10 @@ export default {
 @media (min-width : 1100px) {
     .bioBtn {
         margin-top: 85px;
+    }
+
+    .Bio-Div {
+        margin-top: 95px;
     }
 
 }

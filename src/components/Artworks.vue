@@ -19,28 +19,26 @@
         </div>
     </div>
 
-    <div class="row mt-5">
-        <div class="col-1">
-            <!-- Emtpy -->
-        </div>
-
+    <div class="row Artworks-Div-Bottom">
         <!-- Filter by -->
         <div class="col-2 mt-5">
-            <span class="row mb-2 text-center"> Filter by </span>
-
-            <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
-            <div class="row">
-                <!-- <span class="col text-start">{{ imgYearMinMax[0] }}</span>
-                <span class="col text-end">{{ imgYearMinMax[1] }}</span> -->
-                <form class="box">
-                    <!-- <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
-                        id="customRange2" @input="imgYearRange($event, selectClass)"> -->
-                    <!-- imgYearRange(selectClass) -->
-                    <RangeSlider v-model="imgRange" style="width: 100%" bar-color="#bebefe" :min="imgMin" :max="imgMax"
-                        :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)">
-                        <!-- <template #suffix>$</template> -->
-                    </RangeSlider>
-                </form>
+            <div class="imgFilter-Div">
+                <span class="row mb-2 text-center"> Filter by </span>
+                <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
+                <div class="row">
+                    <!-- <span class="col text-start">{{ imgYearMinMax[0] }}</span>
+                    <span class="col text-end">{{ imgYearMinMax[1] }}</span> -->
+                    <form class="box">
+                        <!-- <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
+                            id="customRange2" @input="imgYearRange($event, selectClass)"> -->
+                        <!-- imgYearRange(selectClass) -->
+                        <RangeSlider v-model="imgRange" style="width: 100%" bar-color="#bebefe" :min="imgMin"
+                            :max="imgMax" :keep-just-significant-figures="false"
+                            @update:model-value="imgYearRange(selectClass)">
+                            <!-- <template #suffix>$</template> -->
+                        </RangeSlider>
+                    </form>
+                </div>
             </div>
 
             <!-- <div class="row mt-5">
@@ -56,7 +54,7 @@
         </div>
 
         <!-- Img List -->
-        <div class="col-8">
+        <div class="col-10">
             <div class="row">
                 <h4 class="text-start mb-4">
                     {{ (imgData.length).toLocaleString('kr') }} {{ selectClass }} works
@@ -67,7 +65,7 @@
             <div class="row mt-4">
                 <!-- <div class="row d-flex align-items-end"> -->
                 <div class="row">
-                    <masonry-wall :items="imgList" :ssr-columns="1" :column-width="300" :gap="40">
+                    <masonry-wall :items="imgList" :ssr-columns="1" :column-width="420" :gap="40">
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
                                 <img class="img-fluid mb-1" :src="'/img/' + selectClass + '/' + item" />
@@ -242,6 +240,10 @@ input {
         width: 250px;
         height: 250px;
     }
+
+    .Artworks-Div-Bottom {
+        margin-top: 50px;
+    }
 }
 
 
@@ -249,6 +251,14 @@ input {
     .artworksCategory {
         width: 300px;
         height: 300px;
+    }
+
+    .imgFilter-Div {
+        margin-left: 90px;
+    }
+
+    .Artworks-Div-Bottom {
+        margin-top: 90px;
     }
 
 }
