@@ -23,8 +23,9 @@
         <!-- Filter by -->
         <div class="col-2 mt-5">
             <div class="imgFilter-Div">
-                <span class="row mb-2 text-center"> Filter by </span>
-                <label for="timePeriod" class="form-label mt-4 text-start">Time Period</label>
+                <div class="row mb-2 text-center">Filter by</div>
+                <div class="mt-4 text-start FilterTime-Div">Time Period</div>
+
                 <div class="row">
                     <!-- <span class="col text-start">{{ imgYearMinMax[0] }}</span>
                     <span class="col text-end">{{ imgYearMinMax[1] }}</span> -->
@@ -261,8 +262,8 @@ input {
         margin-left: 90px;
     }
 
-    .imgFilter-Div Label {
-        margin-left: -40px;
+    .FilterTime-Div {
+        margin-left: -14px;
     }
 
     .Artworks-Div-Bottom {
@@ -270,8 +271,8 @@ input {
     }
 
     #timePeriod {
-        width: 200px;
-        margin-left: -20px;
+        width: 160px;
+        margin-left: -5px;
     }
 
 }

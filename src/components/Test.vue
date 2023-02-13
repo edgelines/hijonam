@@ -1,32 +1,18 @@
 <template>
 
-
-    <swiper direction="'vertical'" :pagination="{
-        clickable: true,
-    }" :modules="modules" class="mySwiper">
-
-        <div class="row">
-            <swiper-slide v-for="(item, i) in sliderImg" :key="item" style="width: 200px;">
-                <img class="col-1" :src="'/img/Main/' + item" />
-            </swiper-slide>
-        </div>
-        <div class="row">
-            <div class="col">
-                <swiper-slide>Slide 1</swiper-slide>
+    <div class="row">
+        <div class="col-2">
+            <div class="row" v-for="(item, i) in sliderImg" :key="item" style="width: 200px;">
+                <img :src="'/img/Main/' + item" />
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <swiper-slide>Slide 2</swiper-slide>
-            </div>
+        <div class="col-6">
+            main img
         </div>
-        <div class="row">
-            <div class="col">
-                <swiper-slide>Slide 3</swiper-slide>
-            </div>
+        <div class="col-4">
+            table
         </div>
-    </swiper>
-
+    </div>
 
 </template>
 <script>
