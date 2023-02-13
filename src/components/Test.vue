@@ -1,7 +1,7 @@
 <template>
 
 
-    <swiper :direction="'vertical'" :pagination="{
+    <swiper direction="'vertical'" :pagination="{
         clickable: true,
     }" :modules="modules" class="mySwiper">
 

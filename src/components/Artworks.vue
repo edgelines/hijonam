@@ -9,7 +9,7 @@
                             <img class="artworksCategory" :src="'/img/' + classItem + '/' + classListImg[i]" />
                         </div>
                         <div class="row mt-1">
-                            <div class="col fw-bolder">
+                            <div class="col imgTilteFont">
                                 {{ classItem }}
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
                                 <img class="img-fluid mb-1" :src="'/img/' + selectClass + '/' + item" />
-                                <div class="fw-bolder text-start">{{ imgData[index].imgTitle }}</div>
+                                <div class="imgTilteFont text-start">{{ imgData[index].imgTitle }}</div>
                             </div>
                         </template>
                     </masonry-wall>
@@ -211,6 +211,10 @@ export default {
     justify-content: flex-start;
     align-items: center;
     position: relative;
+}
+
+.imgTilteFont {
+    font-size: 19px;
 }
 
 /* 
