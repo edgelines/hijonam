@@ -1,16 +1,20 @@
 <template>
 
     <div class="row mt-5">
-        <div class="col-8 mt-3">
-            <!-- 
-            <swiper :slidesPerView="3" :grid="{
-                rows: 3,
-            }" :spaceBetween="30" :pagination="{
+        <div class="col-1">
+
+            <swiper :slidesPerView="1" :grid="{
+                rows: 6,
+            }" :spaceBetween="10" :pagination="{
     clickable: true,
 }" :modules="modules" class="mySwiper">
                 <swiper-slide>Slide 1</swiper-slide>
                 <swiper-slide>Slide 2</swiper-slide><swiper-slide>Slide 3</swiper-slide>
-            </swiper> -->
+
+            </swiper>
+        </div>
+        <div class="col-8 mt-3">
+
 
 
 
@@ -47,12 +51,10 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/grid';
 import 'swiper/css/pagination';
-// import required modules
-import { Pagination } from 'swiper';
+import { Grid, Pagination } from 'swiper';
 
 export default {
     components: {
@@ -70,7 +72,7 @@ export default {
     setup(props) {
 
         return {
-            modules: [Pagination],
+            modules: [Grid, Pagination],
         }
     }
 }
@@ -86,26 +88,21 @@ export default {
     height: auto;
 }
 
+/* 
 .swiper {
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
-
-    /* Center slide text vertically */
+    height: calc((100% - 30px) / 2) !important;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+} */
 </style>

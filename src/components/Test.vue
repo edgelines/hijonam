@@ -1,43 +1,85 @@
 <template>
-    <div class="col-6">
-        <RangeSlider v-model="state.value" style="width: 100%" :max="1000" bar-color="#bebffe" :min="1000">
-            <!-- <template #suffix>$</template> -->
-        </RangeSlider>
-        <RangeSlider v-model="value2" style="width: 100%" :max="2000" bar-color="#bebffe" :min="1000">
-            <!-- <template #suffix>$</template> -->
-        </RangeSlider>
-    </div>
-</template>
 
+
+    <swiper :direction="'vertical'" :pagination="{
+        clickable: true,
+    }" :modules="modules" class="mySwiper">
+
+        <div class="row">
+            <swiper-slide v-for="(item, i) in sliderImg" :key="item" style="width: 200px;">
+                <img class="col-1" :src="'/img/Main/' + item" />
+            </swiper-slide>
+        </div>
+        <div class="row">
+            <div class="col">
+                <swiper-slide>Slide 1</swiper-slide>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <swiper-slide>Slide 2</swiper-slide>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <swiper-slide>Slide 3</swiper-slide>
+            </div>
+        </div>
+    </swiper>
+
+
+</template>
 <script>
-import RangeSlider from 'vue-simple-range-slider';
-import 'vue-simple-range-slider/css';
-import { reactive } from 'vue';
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/grid';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Grid, Pagination } from 'swiper';
 
 export default {
-    name: 'App',
     components: {
-        RangeSlider
-    },
-    methods: {
-
+        Swiper,
+        SwiperSlide,
     },
     data() {
         return {
-            value2: [1000, 1000],
+            sliderImg: ['Spirit 1-2022.jpg', 'Spring Sonata 1-2022.jpg', 'Spain Ronda 2-2022.jpg'],
         }
     },
     setup() {
-        const state = reactive({
-            value: [1000, 1100],
-        });
         return {
-            state,
-        }
+            modules: [Grid, Pagination],
+        };
     },
-    watch: {
-
-    }
-
-}
+};
 </script>
+<style>
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>

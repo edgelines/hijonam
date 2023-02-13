@@ -24,7 +24,7 @@
         <div class="col-2 mt-5">
             <div class="imgFilter-Div">
                 <span class="row mb-2 text-center"> Filter by </span>
-                <label for="customRange2" class="form-label mt-4 text-start">Time Period</label>
+                <label for="timePeriod" class="form-label mt-4 text-start">Time Period</label>
                 <div class="row">
                     <!-- <span class="col text-start">{{ imgYearMinMax[0] }}</span>
                     <span class="col text-end">{{ imgYearMinMax[1] }}</span> -->
@@ -32,9 +32,9 @@
                         <!-- <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
                             id="customRange2" @input="imgYearRange($event, selectClass)"> -->
                         <!-- imgYearRange(selectClass) -->
-                        <RangeSlider v-model="imgRange" style="width: 100%" bar-color="#bebefe" :min="imgMin"
-                            :max="imgMax" :keep-just-significant-figures="false"
-                            @update:model-value="imgYearRange(selectClass)">
+                        <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgMin" :max="imgMax"
+                            :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
+                            id="timePeriod">
                             <!-- <template #suffix>$</template> -->
                         </RangeSlider>
                     </form>
@@ -198,10 +198,10 @@ export default {
 </script>
 
 <style>
-.box {
+/* .box {
     width: 300px;
     height: 100px;
-}
+} */
 
 .filterSlider {
     width: 100%;
@@ -257,8 +257,17 @@ input {
         margin-left: 90px;
     }
 
+    .imgFilter-Div Label {
+        margin-left: -40px;
+    }
+
     .Artworks-Div-Bottom {
         margin-top: 90px;
+    }
+
+    #timePeriod {
+        width: 200px;
+        margin-left: -20px;
     }
 
 }
