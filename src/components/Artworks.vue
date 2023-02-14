@@ -38,6 +38,12 @@
                             id="timePeriod">
                             <!-- <template #suffix>$</template> -->
                         </RangeSlider>
+
+                        <input type="range" v-model="rangeHeight" id="rangeHeight" />
+                        <input type="range" v-model="rangeWidth" id="rangeWidth" />
+                        <div :style="{ width: rangeWidth * 1.14 + 'px', height: rangeHeight * 1.25 + 'px' }"
+                            class="img-Box">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -88,18 +94,12 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide } from 'vue3-carousel'
 
-// import { Swiper, SwiperSlide } from 'swiper/vue';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import { Navigation, Pagination } from 'swiper';
 import axios from 'axios'
 
 import RangeSlider from 'vue-simple-range-slider';
 import 'vue-simple-range-slider/css';
 import { reactive, defineComponent } from "vue";
 import MasonryWall from '@yeger/vue-masonry-wall'
-// import MultiRangeSlider from "multi-range-slider-vue";
-
 
 export default {
     components: {
@@ -107,7 +107,6 @@ export default {
         MasonryWall,
         RangeSlider,
         Carousel, Slide,
-        // MultiRangeSlider
     },
     mounted() { this.loadData() },
     methods: {
@@ -189,6 +188,8 @@ export default {
             imgMax: '',
             imgRange: '',
 
+            rangeWidth: 100,
+            rangeHeight: 100,
 
             imgSizeW: '',
             imgSizeH: '',
@@ -200,11 +201,6 @@ export default {
 </script>
 
 <style>
-/* .box {
-    width: 300px;
-    height: 100px;
-} */
-
 .filterSlider {
     width: 100%;
     height: 100%;
@@ -219,20 +215,28 @@ export default {
     font-size: 19px;
 }
 
-/* 
-input {
-    width: calc(100% - 2rem);
-    top: 3rem;
-    left: 1rem;
-    position: absolute;
-    border: none;
-} */
-
-.range-vertical {
-    transform: rotate(270deg);
-    width: 40%;
-
+#rangeHeight {
+    position: relative;
+    left: -60px;
+    top: 100px;
+    /* float: left; */
+    /* transform: ; */
+    transform: rotate(90deg);
+    width: 100px;
 }
+
+#Box-Div {
+    height: 200px;
+}
+
+.img-Box {
+    position: relative;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(89, 89, 233, 0.525);
+}
+
 
 @media (max-width : 600px) {
     .artworksCategory {
@@ -276,5 +280,27 @@ input {
         margin-left: -5px;
     }
 
+    #rangeHeight {
+        position: relative;
+        left: -105px;
+        top: 105px;
+        transform: rotate(90deg);
+        width: 130px;
+    }
+
+    #rangeWidth {
+        position: relative;
+        left: -12px;
+        /* top: 105px; */
+        width: 120px;
+    }
+
+    .img-Box {
+        position: relative;
+        left: 30px;
+        width: 80px;
+        height: 80px;
+        background-color: rgba(89, 89, 233, 0.525);
+    }
 }
 </style>
