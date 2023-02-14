@@ -46,11 +46,18 @@
                             @input="imgSizeRange(selectClass)" />
                         <input type="range" v-model="rangeImg.H" id="rangeHeight" :min="0" :max="imgSizeFixed.W"
                             @input="imgSizeRange(selectClass)" />
-                        <div :style="{ width: (sizePeriodGuideW / 1.7) + '%', height: (sizePeriodGuideH * 1.43) + '%' }"
+                        <div :style="{ width: (sizePeriodGuideW / 1.8) + '%', height: (sizePeriodGuideH * 1.94) + '%' }"
                             class="img-Box">
                         </div>
-                        {{ rangeImg.W }} * {{ rangeImg.H }}
                     </form>
+                </div>
+                <div id="Size-Box">
+                    <div class="row mt-3">
+                        {{ rangeImg.W }}cm X {{ rangeImg.H }}cm
+                    </div>
+                    <div class="row">
+                        {{ parseInt(rangeImg.W * 0.393701) }}inch X {{ parseInt(rangeImg.H * 0.393701) }}inch
+                    </div>
                 </div>
             </div>
         </div>
@@ -323,6 +330,11 @@ export default {
         top: 57px;
         transform: rotate(90deg);
         width: 100px;
+    }
+
+    #Size-Box {
+        position: relative;
+        top: 90px;
     }
 
     .img-Box {

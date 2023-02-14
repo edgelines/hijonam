@@ -24,12 +24,12 @@
 
                 <div class="mt-4">
                     Height : {{ parseInt(ArtWorksImg[$route.params.id]['imgSize-w'] * 0.393701) }} inches / {{
-                        ArtWorksImg[$route.params.id]['imgSize-w'] * 10
+                        ArtWorksImg[$route.params.id]['imgSize-w']
                     }} cm
                 </div>
                 <div>
                     Width : {{ parseInt(ArtWorksImg[$route.params.id]['imgSize-h'] * 0.393701) }} inches / {{
-                        ArtWorksImg[$route.params.id]['imgSize-h'] * 10
+                        ArtWorksImg[$route.params.id]['imgSize-h']
                     }} cm
                 </div>
 
