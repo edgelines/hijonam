@@ -36,7 +36,7 @@
                 <div class="mt-4 mb-4">
                     Executed {{ ArtWorksImg[$route.params.id].imgYear }}
                 </div>
-                <hr />
+                <hr id="ArtworksDetailHr" />
             </div>
 
         </div>
@@ -140,8 +140,12 @@ export default {
 
     .ArtworksDetail-Table {
         width: 360px;
-        margin-top: 70px;
-        margin-left: 30px;
+        margin-top: 90px;
+        margin-left: 50px;
+    }
+
+    #ArtworksDetailHr {
+        margin-top: 30px;
     }
 
 }
