@@ -39,17 +39,13 @@
                     </form>
                 </div>
 
-                <div class="mt-4 text-start FilterTime-Div">Size Period</div>
+                <div class="mt-4 text-start FilterTime-Div">Size</div>
                 <div class="row mt-2">
                     <form class="box">
-                        <!-- <input type="range" @click="rangeW_input($event.target.value)" id="rangeWidth" :min="0"
-                            :max="100" />
-                        <input type="range" @click="rangeH_input($event.target.value)" id="rangeHeight" :min="0"
-                            :max="100" /> -->
                         <input type="range" v-model="rangeImg.W" id="rangeWidth" :min="0" :max="imgSizeFixed.W"
-                            @click="imgSizeRange(selectClass)" />
+                            @input="imgSizeRange(selectClass)" />
                         <input type="range" v-model="rangeImg.H" id="rangeHeight" :min="0" :max="imgSizeFixed.W"
-                            @click="imgSizeRange(selectClass)" />
+                            @input="imgSizeRange(selectClass)" />
                         <div :style="{ width: (sizePeriodGuideW / 1.7) + '%', height: (sizePeriodGuideH * 1.43) + '%' }"
                             class="img-Box">
                         </div>
@@ -110,90 +106,6 @@ export default {
     props: {
         ArtWorksImg: Object,
     },
-
-    // setup(props) {
-    //     const allData = props.ArtWorksImg;
-    //     let imgData = ref();
-    //     var selectClass = '';
-    //     let classList = reactive([]);
-    //     let classListImg = reactive([]);
-    //     let imgList = reactive([]);
-
-    //     let imgYear = reactive({ Max: '', Min: '' });
-    //     let imgRange = reactive([]);
-
-    //     let imgSizeFixed = reactive({ W: '', H: '' });
-    //     let imgSize = reactive({ W: '', H: '' });
-    //     let rangeImg = reactive({ W: '', H: '' });
-
-    //     function ArtworksBtnClass(name) {
-    //         imgData.value = allData.filter(v => v.class == name);
-    //         selectClass = name;
-    //         var tmp = [], tmp1 = [], tmp2 = [], tmp3 = []
-    //         imgData.value.forEach((value) => {
-    //             tmp.push(value.fileName);
-    //             tmp1.push(value.imgYear);
-    //             tmp2.push(value['imgSize-w']);
-    //             tmp3.push(value['imgSize-h'])
-    //         })
-    //         imgList = tmp;
-    //         var Max = Math.max(...tmp)
-    //         var Min = Math.min(...tmp)
-    //         if (Min == Max) {
-    //             return Min = Max - 1
-    //         }
-    //         imgRange = [Min, Max]
-    //         imgYear.Max = Max
-    //         imgYear.Min = Min
-
-    //         var Max = Math.max(...tmp2)
-    //         imgSizeFixed.W = Max
-    //         rangeImg.W = Max
-    //         var Max = Math.max(...tmp3)
-    //         imgSizeFixed.H = Max
-    //         rangeImg.H = Max
-    //     }
-
-    //     function mainImg(name) {
-    //         const filter = allData.filter(v => v.class == name)
-    //         const last = filter.length;
-    //         classListImg.push(filter[last - 1].fileName)
-    //     };
-    //     function sizePeriodGuideH() {
-    //         return parseInt((this.rangeImg.H / this.imgSizeFixed.H) * 100)
-    //     };
-    //     function sizePeriodGuideW() {
-    //         return parseInt((this.rangeImg.W / this.imgSizeFixed.W) * 100)
-    //     };
-    //     var tmp = [];
-    //     allData.forEach((value, index, array) => { tmp.push(value.class); })
-    //     const set = new Set(tmp)
-    //     const newArr = [...set]
-    //     classList = newArr
-
-    //     newArr.forEach((value) => { mainImg(value) })
-
-    //     console.log(classList)
-
-    //     ArtworksBtnClass(classList[0]);
-
-    //     var filter = allData.filter(value => value.class == selectClass)
-    //     filter = filter.filter(value => imgRange[0] <= value.imgYear &
-    //         value.imgYear <= imgRange[1])
-    //     imgData.value = filter
-
-    //     var tmp = []
-    //     imgData.value.forEach((value) => { tmp.push(value.fileName) })
-    //     imgList = tmp;
-
-    //     return {
-    //         allData, imgData, selectClass, classList, classListImg, imgList,
-    //         imgYear, imgRange,
-
-    //         ArtworksBtnClass, mainImg, sizePeriodGuideH, sizePeriodGuideW,
-    //         imgSizeFixed, imgSize, rangeImg,
-    //     }
-    // },
 
     mounted() { this.loadData() },
     computed: {
