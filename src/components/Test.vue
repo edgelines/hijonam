@@ -1,13 +1,8 @@
 <template>
-    <div class="col-1 border border-dark border-2">
-        <form id="Box-Div">
-            <div>
-                <input type="range" class="range-vertical" v-model="firstValue" />
-                <input type="range" v-model="secondValue" />
-                <div :style="{ width: secondValue + 'px', height: firstValue + 'px' }" class="img-Box"></div>
-            </div>
-        </form>
-
+    <div>
+        <input type="range" :min="0" :max="2153" v-model="value" />
+        <p>Value: {{ valuePercentage }}%</p>
+        <div :style="{ width: valuePercentage + '%', height: valuePercentage + '%', background: 'red' }"></div>
     </div>
 </template>
 
@@ -15,13 +10,13 @@
 export default {
     data() {
         return {
-            firstValue: 100,
-            secondValue: 100
+            value: 2153
+        }
+    },
+    computed: {
+        valuePercentage() {
+            return (this.value / 2153) * 100;
         }
     }
 }
 </script>
-
-<style>
-
-</style>

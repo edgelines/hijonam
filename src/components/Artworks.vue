@@ -27,37 +27,30 @@
                 <div class="mt-4 text-start FilterTime-Div">Time Period</div>
 
                 <div class="row">
-                    <!-- <span class="col text-start">{{ imgYearMinMax[0] }}</span>
-                    <span class="col text-end">{{ imgYearMinMax[1] }}</span> -->
                     <form class="box">
-                        <!-- <input type="range" class="col form-range" :min=imgYearMinMax[0] :max=imgYearMinMax[1]
-                            id="customRange2" @input="imgYearRange($event, selectClass)"> -->
-                        <!-- imgYearRange(selectClass) -->
                         <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgMin" :max="imgMax"
                             :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
                             id="timePeriod">
-                            <!-- <template #suffix>$</template> -->
                         </RangeSlider>
+                    </form>
+                </div>
 
-                        <input type="range" v-model="rangeHeight" id="rangeHeight" />
-                        <input type="range" v-model="rangeWidth" id="rangeWidth" />
-                        <div :style="{ width: rangeWidth * 1.14 + 'px', height: rangeHeight * 1.25 + 'px' }"
+                <div class="mt-4 text-start FilterTime-Div">Size Period</div>
+                <div class="row mt-2">
+                    <form class="box">
+                        <!-- <input type="range" @click="rangeW_input($event.target.value)" id="rangeWidth" :min="0"
+                            :max="100" />
+                        <input type="range" @click="rangeH_input($event.target.value)" id="rangeHeight" :min="0"
+                            :max="100" /> -->
+                        <input type="range" v-model="rangeImg.W" id="rangeWidth" :min="0" :max="imgSizeFixed.W" />
+                        <input type="range" v-model="rangeImg.H" id="rangeHeight" :min="0" :max="imgSizeFixed.W" />
+                        <div :style="{ width: (sizePeriodGuideW / 1.7) + '%', height: (sizePeriodGuideH * 1.43) + '%' }"
                             class="img-Box">
                         </div>
+                        {{ rangeImg.W }} * {{ rangeImg.H }}
                     </form>
                 </div>
             </div>
-
-            <!-- <div class="row mt-5">
-                <div class="col">
-                    <input type="range" class="form-range range-vertical" v-model="imgSizeH">
-                    <span v-text="imgSizeH"></span>
-                </div>
-                <div class="col-8">
-                    <input type="range" class="form-range" v-model="imgSizeW">
-                    <span v-text="imgSizeW"></span>
-                </div>
-            </div> -->
         </div>
 
         <!-- Img List -->
@@ -109,6 +102,14 @@ export default {
         Carousel, Slide,
     },
     mounted() { this.loadData() },
+    computed: {
+        sizePeriodGuideH() {
+            return parseInt((this.rangeImg.H / this.imgSizeFixed.H) * 100)
+        },
+        sizePeriodGuideW() {
+            return parseInt((this.rangeImg.W / this.imgSizeFixed.W) * 100)
+        }
+    },
     methods: {
         loadData() {
             axios.get("/json/Artworks.json").then((response) => {
@@ -143,8 +144,8 @@ export default {
             this.getMaxMin()
         },
         getMaxMin() {
-            var tmp = []
-            this.imgData.forEach((value) => { tmp.push(value.imgYear) })
+            var tmp = [], tmp2 = [], tmp3 = []
+            this.imgData.forEach((value) => { tmp.push(value.imgYear); tmp2.push(value['imgSize-w']); tmp3.push(value['imgSize-h']) })
             var Max = Math.max(...tmp)
             var Min = Math.min(...tmp)
             this.imgYearMinMax = [Min, Max]
@@ -154,6 +155,13 @@ export default {
             this.imgRange = [Min, Max]
             this.imgMin = Min
             this.imgMax = Max
+
+            var Max = Math.max(...tmp2)
+            this.imgSizeFixed.W = Max
+            this.rangeImg.W = Max
+            var Max = Math.max(...tmp3)
+            this.imgSizeFixed.H = Max
+            this.rangeImg.H = Max
         },
         imgYearRange(name) {
             var filter = this.allData.filter(value => value.class == name)
@@ -173,8 +181,6 @@ export default {
     },
     data() {
         return {
-            // modules: [Navigation, Pagination],
-
             allData: '',
             imgData: '',
             classList: [],
@@ -188,19 +194,21 @@ export default {
             imgMax: '',
             imgRange: '',
 
-            rangeWidth: 100,
-            rangeHeight: 100,
-
-            imgSizeW: '',
-            imgSizeH: '',
-
-            // state: reactive({ number: 1 })
+            imgSizeFixed: reactive({ W: '', H: '' }),
+            imgSize: reactive({ W: '', H: '' }),
+            showImgSize: reactive({ W: '', H: '' }),
+            rangeImg: reactive({ W: '', H: '' }),
         }
     },
 }
 </script>
 
 <style>
+.simple-range-slider .simple-range-slider-popover[data-v-f6e84873] {
+    box-shadow: none !important;
+}
+
+
 .filterSlider {
     width: 100%;
     height: 100%;
@@ -280,14 +288,6 @@ export default {
         margin-left: -5px;
     }
 
-    #rangeHeight {
-        position: relative;
-        left: -105px;
-        top: 105px;
-        transform: rotate(90deg);
-        width: 130px;
-    }
-
     #rangeWidth {
         position: relative;
         left: -12px;
@@ -295,12 +295,21 @@ export default {
         width: 120px;
     }
 
+    #rangeHeight {
+        position: relative;
+        left: -105px;
+        top: 57px;
+        transform: rotate(90deg);
+        width: 100px;
+    }
+
     .img-Box {
         position: relative;
         left: 30px;
-        width: 80px;
-        height: 80px;
-        background-color: rgba(89, 89, 233, 0.525);
+        top: -10px;
+        width: 100px;
+        height: 100px;
+        background-color: rgba(166, 166, 166, 0.525);
     }
 }
 </style>
