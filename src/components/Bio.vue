@@ -29,9 +29,9 @@
             <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
                 <thead>
                     <tr>
-                        <th class="text-center d-none" style="width: 100px;">year</th>
-                        <th class="text-center d-none" style="width: 500px;">title</th>
-                        <th class="text-center d-none" style="width: 250px;">location</th>
+                        <th class="text-center d-none" style="width: 100px !important;">year</th>
+                        <th class="text-center d-none" style="width: 400px !important;">title</th>
+                        <th class="text-center d-none" style="width: 400px !important;">location</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,7 +76,7 @@ export default {
                 scrollY: '600px',
                 scrollCollapse: true,
                 paging: false,
-                autoWidth: true,
+                // autoWidth: true,
             },
         }
     }

@@ -54,18 +54,7 @@ export default {
     components: {
 
     },
-    // mounted() {
-    //     this.mount()
-    // },
-    // methods: {
-    //     test(val) {
-    //         console.log(val)
-    //         console.log(this.mainImg);
-    //     },
-    //     mount() {
-    //         this.mainImg = ArtWorksImg[$route.params.id].fileName[0]
-    //     }
-    // },
+
     data() {
         return {
             mainImg: ''
