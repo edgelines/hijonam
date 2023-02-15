@@ -4,11 +4,11 @@
         <div id="cardList" class="mx-auto">
             <masonry-wall :items="show" :ssr-columns="1" :column-width="400" :gap="40">
                 <template #default="{ item, index }">
-                    <div class="exCard">
+                    <div class="exCard mb-3">
                         <img class="img-fluid mb-3" :src="'/img/Exhibitions/' + item.fileName[0]" />
                         <div class="cardFont cardFont-title text-start mb-1">{{ item.title }}</div>
                         <div class="cardFont text-start">{{ item.period }}</div>
-                        <button type="button" class="btn btn-lg viewMore mt-4 d-flex justify-content-start"
+                        <button type="button" class="btn btn-lg viewMore mt-5 d-flex justify-content-start"
                             @click="$router.push('/pastexhibtion/' + index)">View
                             More</button>
                     </div>
