@@ -1,19 +1,20 @@
 <template>
-    <div class="container">
-        <div class="row" id="cardList">
-            <masonry-wall :items="show" :ssr-columns="1" :column-width="410" :gap="40">
-                <template #default="{ item, index }">
-                    <div class="border border-2 exCard" @click="$router.push('/pastexhibtion/' + index)">
-                        <img class="img-fluid mb-3" :src="'/img/Exhibitions/' + item.fileName[0]" />
-                        <div class="imgTilteFont text-start mb-1">{{ item.title }}</div>
-                        <div class="imgTilteFont text-start">{{ item.period }}</div>
-                        <div class="mt-3">View More</div>
-                    </div>
-                </template>
-            </masonry-wall>
 
-        </div>
+    <div class="row" id="cardList">
+        <masonry-wall :items="show" :ssr-columns="1" :column-width="600" :gap="40">
+            <template #default="{ item, index }">
+                <div class="exCard" @click="$router.push('/pastexhibtion/' + index)">
+                    <img class="img-fluid mb-3" :src="'/img/Exhibitions/' + item.fileName[0]" />
+                    <div class="cardFont cardFont-title text-start mb-1">{{ item.title }}</div>
+                    <div class="cardFont text-start">{{ item.period }}</div>
+                    <button type="button" class="btn btn-lg viewMore mt-3 d-flex justify-content-start">View
+                        More</button>
+                </div>
+            </template>
+        </masonry-wall>
+
     </div>
+
 
 </template>
 
@@ -74,10 +75,29 @@ export default {
 
 <style>
 #cardList {
-    margin-top: 60px;
+    margin-top: 100px;
+}
+
+.cardFont {
+    font-size: 21px;
+    color: #58595b;
+}
+
+.cardFont-title {
+    font-weight: 900;
+}
+
+.viewMore {
+    -webkit-appearance: none;
+    border-radius: 0;
+    background-color: #58595b;
+    color: white;
+    font-size: 20px;
 }
 
 .exCard {
     padding: 20px;
+    border: 0.4px solid rgba(85, 82, 82, 0.541);
+
 }
 </style>

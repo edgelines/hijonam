@@ -1,16 +1,16 @@
 <template>
-    <div class="container">
-        <div class="row" id="PastExhibitionDetail">
 
-            <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="410" :gap="40">
-                <template #default="{ item, index }">
-                    <div>
-                        <img class="img-fluid" :src="'/img/Exhibitions/' + item" />
-                    </div>
-                </template>
-            </masonry-wall>
-        </div>
+    <div class="row" id="PastExhibitionDetail">
+
+        <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="600" :gap="40">
+            <template #default="{ item, index }">
+                <div>
+                    <img class="img-fluid" :src="'/img/Exhibitions/' + item" />
+                </div>
+            </template>
+        </masonry-wall>
     </div>
+
 </template>
 
 <script>

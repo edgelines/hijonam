@@ -111,7 +111,7 @@ export default {
         Carousel, Slide,
     },
     props: {
-        ArtWorksImg: Object,
+        // ArtWorksImg: Object,
     },
 
     mounted() { this.loadData() },
