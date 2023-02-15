@@ -49,7 +49,6 @@
 <script>
 import { useRouter, useRoute } from 'vue-router'
 import { reactive, ref } from "vue";
-import { main } from '@popperjs/core';
 export default {
     components: {
 
