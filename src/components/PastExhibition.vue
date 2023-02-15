@@ -93,7 +93,7 @@ export default {
     border-radius: 0;
     background-color: #58595b;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .exCard {
