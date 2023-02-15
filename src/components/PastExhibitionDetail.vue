@@ -1,8 +1,8 @@
 <template>
 
-    <div class="row" id="PastExhibitionDetail">
+    <div class="row mx-auto" id="PastExhibitionDetail">
 
-        <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="600" :gap="40">
+        <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="500" :gap="40">
             <template #default="{ item, index }">
                 <div>
                     <img class="img-fluid" :src="'/img/Exhibitions/' + item" />
@@ -36,5 +36,6 @@ export default {
 <style>
 #PastExhibitionDetail {
     margin-top: 100px;
+    width: 85%;
 }
 </style>
