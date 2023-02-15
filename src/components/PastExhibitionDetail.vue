@@ -2,7 +2,7 @@
 
     <div class="row mx-auto" id="PastExhibitionDetail">
 
-        <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="500" :gap="40">
+        <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="400" :gap="40">
             <template #default="{ item, index }">
                 <div>
                     <img class="img-fluid" :src="'/img/Exhibitions/' + item" />

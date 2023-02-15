@@ -2,7 +2,7 @@
 
     <div>
         <div id="cardList" class="mx-auto">
-            <masonry-wall :items="show" :ssr-columns="1" :column-width="500" :gap="40">
+            <masonry-wall :items="show" :ssr-columns="1" :column-width="400" :gap="40">
                 <template #default="{ item, index }">
                     <div class="exCard">
                         <img class="img-fluid mb-3" :src="'/img/Exhibitions/' + item.fileName[0]" />
