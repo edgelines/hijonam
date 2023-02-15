@@ -32,7 +32,7 @@
                         <!-- <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgYear.Min" :max="imgYear.Max"
                             :keep-just-significant-figures="false" id="timePeriod">
                         </RangeSlider> -->
-                        <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgYear.Min" :max="imgYear.Max"
+                        <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
                             :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
                             id="timePeriod">
                         </RangeSlider>
@@ -97,16 +97,16 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide } from 'vue3-carousel'
 
 import axios from 'axios'
-
+import '../assets/style.css'
 import RangeSlider from 'vue-simple-range-slider';
 import 'vue-simple-range-slider/css';
 import { ref, reactive, defineComponent } from "vue";
-import MasonryWall from '@yeger/vue-masonry-wall'
+// import MasonryWall from '@yeger/vue-masonry-wall'
 
 export default {
     components: {
         // Swiper, SwiperSlide,
-        MasonryWall,
+        // MasonryWall,
         RangeSlider,
         Carousel, Slide,
     },
@@ -234,6 +234,8 @@ export default {
 
 <style>
 .simple-range-slider .simple-range-slider-popover[data-v-f6e84873] {
+    padding: 0px !important;
+    border-radius: 0px !important;
     box-shadow: none !important;
 }
 
@@ -322,6 +324,12 @@ export default {
         left: -12px;
         /* top: 105px; */
         width: 120px;
+
+        /* opacity: .5;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 8px;
+        box-shadow: 0 0 3px 3px #6f84be */
     }
 
     #rangeHeight {

@@ -26,7 +26,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item">
-                                    <router-link class="nav-font" to="/exhibtion">Past Exhibition</router-link>
+                                    <router-link class="nav-font" to="/pastexhibtion">Past Exhibition</router-link>
                                 </a>
                                 <a class="dropdown-item">
                                     <router-link class="nav-font" to="/upcoming">Upcoming Exhibition</router-link>
@@ -58,7 +58,7 @@
     </header>
     <div id="wrapper">
         <div class="container-fluid">
-            <router-view :ArtWorksImg="ArtWorksImg" />
+            <router-view :ArtWorksImg="ArtWorksImg" :Exhibition="Exhibition" />
         </div>
     </div>
     <!-- <footer class="bg-light">
@@ -77,12 +77,16 @@ export default {
     mounted() {
         axios.get("/json/Artworks.json").then((response) => {
             this.ArtWorksImg = response.data
-
         })
+        axios.get("/json/Exhibition.json").then((response) => {
+            this.Exhibition = response.data
+        })
+
     },
     data() {
         return {
             ArtWorksImg: [],
+            Exhibition: [],
 
         }
     }
