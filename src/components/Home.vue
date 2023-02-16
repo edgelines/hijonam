@@ -4,7 +4,7 @@
         <Carousel :autoplay="3500" :wrap-around="true" :transition="15000">
             <Slide v-for="(item, i) in sliderImg" :key="item">
                 <div class="d-flex align-self-center flex-wrap mt-2">
-                    <img class="d-flex align-self-center flex-wrap" :src="'/img/Main/' + item" />
+                    <img class="d-flex align-self-center flex-wrap Main-Mobile" :src="'/img/Main/' + item" />
                 </div>
             </Slide>
         </Carousel>
@@ -89,5 +89,13 @@ export default {
     border-radius: 4px;
     margin: 0 10px;
     font-size: 13px;
+}
+
+
+@media (max-width : 600px) {
+    .Main-Mobile {
+        width: 350px;
+        height: 350px;
+    }
 }
 </style>

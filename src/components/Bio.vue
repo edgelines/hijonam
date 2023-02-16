@@ -4,6 +4,7 @@
         <!-- <div class="col-sm-12 col-md-4 col-lg-3">
                 <img :src="profileIMG" class="img-fluid" />
             </div> -->
+
         <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
             <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-lg"
@@ -23,15 +24,15 @@
 
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8">
-            <div class="row mb-5 text-start">
+            <div class="row text-start" id="Bio-Table-MainTitle">
                 <h3>{{ title }}</h3>
             </div>
             <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
                 <thead>
                     <tr>
-                        <th class="text-center d-none" style="width: 100px !important;">year</th>
-                        <th class="text-center d-none" style="width: 400px !important;">title</th>
-                        <th class="text-center d-none" style="width: 400px !important;">location</th>
+                        <th class="text-center Bio-Table-year">year</th>
+                        <th class="text-center Bio-Table-title">title</th>
+                        <th class="text-center Bio-Table-location">location</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +67,7 @@ export default {
             tableData: [],
             columns: [{ data: "year" }, { data: "title" }, { data: "location" }],
             options: {
-                // columnDefs: [{ targets: [0], width: '50px' }],
+                // columnDefs: [{ targets: [0], width: '50px' }, { targets: [1], width: '200px' }, { targets: [2], width: '100px' }],
                 ordering: false,
                 // lengthMenu: [5],
                 lengthChange: false,
@@ -88,8 +89,38 @@ export default {
     font-size: 18px;
 }
 
+.Bio-Table-year {
+    font-size: 0px;
+    width: 50px;
+}
+
+.Bio-Table-title {
+    font-size: 0px;
+    width: 200px;
+}
+
+.Bio-Table-location {
+    font-size: 0px;
+    width: 100px;
+}
+
+@media (max-width : 600px) {
+    .bioBtn {
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    .Bio-Div {
+        margin-top: 20px;
+    }
+}
+
 
 @media (min-width : 1100px) {
+    #Bio-Table-MainTitle {
+        margin-bottom: 50px;
+    }
+
     .bioBtn {
         margin-top: 85px;
     }

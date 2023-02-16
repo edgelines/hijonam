@@ -22,7 +22,47 @@
 
     <div class="row Artworks-Div-Bottom">
         <!-- Filter by -->
-        <div class="col-2 mt-5">
+        <div class="col-12" id="Mobile-Filter">
+            <div class="imgFilter-Div">
+                <div class="row mb-2 text-center">Filter by</div>
+                <div class="mt-4 text-start FilterTime-Div">Time Period</div>
+
+                <div class="row">
+                    <form class="box">
+                        <!-- <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgYear.Min" :max="imgYear.Max"
+                            :keep-just-significant-figures="false" id="timePeriod">
+                        </RangeSlider> -->
+                        <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
+                            :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
+                            id="timePeriod">
+                        </RangeSlider>
+                    </form>
+                </div>
+
+                <div class="mt-4 text-start FilterTime-Div">Size</div>
+                <div class="row mt-2">
+                    <form class="box">
+                        <input type="range" v-model="rangeImg.W" id="rangeWidth" :min="0" :max="imgSizeFixed.W"
+                            @input="imgSizeRange(selectClass)" />
+                        <input type="range" v-model="rangeImg.H" id="rangeHeight" :min="0" :max="imgSizeFixed.W"
+                            @input="imgSizeRange(selectClass)" />
+                        <div :style="{ width: (sizePeriodGuideW / 1.8) + '%', height: (sizePeriodGuideH * 1.94) + '%' }"
+                            class="img-Box">
+                        </div>
+                    </form>
+                </div>
+                <div id="Size-Box">
+                    <div class="row mt-3">
+                        {{ rangeImg.W }}cm X {{ rangeImg.H }}cm
+                    </div>
+                    <div class="row">
+                        {{ parseInt(rangeImg.W * 0.393701) }}inch X {{ parseInt(rangeImg.H * 0.393701) }}inch
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Filter by -->
+        <div class="col-md-2 col-lg-2 mt-5" id="nonMobile-Filter">
             <div class="imgFilter-Div">
                 <div class="row mb-2 text-center">Filter by</div>
                 <div class="mt-4 text-start FilterTime-Div">Time Period</div>
@@ -63,7 +103,7 @@
         </div>
 
         <!-- Img List -->
-        <div class="col-10">
+        <div class="sol-sm-12 col-md-10 col-lg-10">
             <div class="row">
                 <h4 class="text-start mb-4">
                     {{ (imgData.length).toLocaleString('kr') }} {{ selectClass }} works
@@ -240,15 +280,6 @@ export default {
 }
 
 
-.filterSlider {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-}
 
 .imgTilteFont {
     font-size: 19px;
@@ -279,19 +310,36 @@ export default {
 
 @media (max-width : 600px) {
     .artworksCategory {
-        width: 100px;
-        height: 100px;
+        width: 10px;
+        height: 10px;
+        display: none;
+    }
+
+    .imgTilteFont {
+        font-size: 10px;
+    }
+
+    #nonMobile-Filter {
+        display: none;
     }
 }
 
 @media (max-width : 1099px) {
     .artworksCategory {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .imgTilteFont {
+        font-size: 14px;
     }
 
     .Artworks-Div-Bottom {
         margin-top: 50px;
+    }
+
+    #Mobile-Filter {
+        display: none;
     }
 }
 
@@ -312,6 +360,10 @@ export default {
 
     .Artworks-Div-Bottom {
         margin-top: 90px;
+    }
+
+    #Mobile-Filter {
+        display: none;
     }
 
     #timePeriod {

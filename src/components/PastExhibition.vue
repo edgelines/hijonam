@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <div id="cardList" class="mx-auto">
             <masonry-wall :items="show" :ssr-columns="1" :column-width="400" :gap="40">
@@ -7,6 +6,7 @@
                     <div class="exCard mb-3">
                         <img class="img-fluid mb-3" :src="'/img/Exhibitions/' + item.fileName[0]" />
                         <div class="cardFont cardFont-title text-start mb-1">{{ item.title }}</div>
+                        <div class="cardFont text-start mb-1">{{ item.location }}</div>
                         <div class="cardFont text-start">{{ item.period }}</div>
                         <button type="button" class="btn btn-lg viewMore mt-5 d-flex justify-content-start"
                             @click="$router.push('/pastexhibtion/' + index)">View
@@ -48,6 +48,7 @@ export default {
             var tmp = {
                 title: filter[0].subject,
                 period: filter[0].dayStart + ' ~ ' + filter[0].dayEnd,
+                location: filter[0].location,
                 fileName: filter[0].fileName
             }
             this.exhibitionData.push(tmp);
