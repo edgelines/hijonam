@@ -130,13 +130,13 @@ footer {
     .nav-font {
         color: black !important;
         text-decoration: none !important;
-        font-family: 'Crimson Text', serif;
+        /* font-family: 'Crimson Text', serif; */
     }
 
     .nav-font-home {
         color: black !important;
         text-decoration: none !important;
-        font-family: 'Crimson Text', serif;
+        /* font-family: 'Crimson Text', serif; */
         font-weight: 800;
     }
 
@@ -150,17 +150,19 @@ footer {
     .nav-font {
         color: black !important;
         text-decoration: none !important;
-        font-family: 'Crimson Text', serif;
+        /* font-family: 'Crimson Text', serif; */
         /* font-weight: 600; */
         font-size: 20px;
         margin-top: 50px !important;
         margin-right: 50px;
+
     }
+
 
     .nav-font-home {
         color: black !important;
         text-decoration: none !important;
-        font-family: 'Crimson Text', serif;
+        /* font-family: 'Crimson Text', serif; */
         font-weight: 800;
         font-size: 33px;
         margin-left: 90px;

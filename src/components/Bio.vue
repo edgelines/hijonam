@@ -8,11 +8,6 @@
         <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
             <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-lg"
-                    @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo Exhibitions</button>
-                <button type="button" class="btn btn-lg"
-                    @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
-                    Exhibitions</button>
-                <button type="button" class="btn btn-lg"
                     @click="btnData('Awards'); this.title = 'Awards & Professional Affiliations'">Awards</button>
                 <button type="button" class="btn btn-lg"
                     @click="btnData('Published Articles'); this.title = 'Published Articles'">Published
@@ -46,12 +41,12 @@
 </template>
 
 <script>
-import { classAccessorProperty } from '@babel/types'
+
 import axios from 'axios'
 export default {
-    components: { classAccessorProperty },
+
     mounted() {
-        this.btnData('Solo Exhibitions')
+        this.btnData('Awards')
     },
     methods: {
         btnData(data) {
@@ -62,8 +57,8 @@ export default {
     },
     data() {
         return {
-            profileIMG: require('../assets/profile.jpg'),
-            title: 'Solo Exhibitions',
+            // profileIMG: require('../assets/profile.jpg'),
+            title: 'Awards',
             tableData: [],
             columns: [{ data: "year" }, { data: "title" }, { data: "location" }],
             options: {

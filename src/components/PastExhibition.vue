@@ -1,105 +1,80 @@
 <template>
-    <div>
-        <div id="cardList" class="mx-auto">
-            <masonry-wall :items="show" :ssr-columns="1" :column-width="400" :gap="40">
-                <template #default="{ item, index }">
-                    <div class="exCard mb-3">
-                        <img class="img-fluid mb-3" :src="'/img/Exhibitions/' + item.fileName[0]" />
-                        <div class="cardFont cardFont-title text-start mb-1">{{ item.title }}</div>
-                        <div class="cardFont text-start mb-1">{{ item.location }}</div>
-                        <div class="cardFont text-start">{{ item.period }}</div>
-                        <button type="button" class="btn btn-lg viewMore mt-5 d-flex justify-content-start"
-                            @click="$router.push('/pastexhibtion/' + index)">View
-                            More</button>
-                    </div>
-                </template>
-            </masonry-wall>
+    <div class="row Bio-Div">
+
+        <!-- <div class="col-sm-12 col-md-4 col-lg-3">
+                <img :src="profileIMG" class="img-fluid" />
+            </div> -->
+
+        <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
+            <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo</button>
+                <button type="button" class="btn btn-lg"
+                    @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
+                </button>
+            </div>
+
         </div>
+        <div class="col-sm-12 col-md-8 col-lg-8">
+            <div class="row text-start" id="Bio-Table-MainTitle">
+                <h3>{{ title }}</h3>
+            </div>
+            <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
+                <thead>
+                    <tr>
+                        <th class="text-center Bio-Table-year">year</th>
+                        <th class="text-center Bio-Table-title">title</th>
+                        <th class="text-center Bio-Table-location">location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </DataTable>
+        </div>
+
     </div>
+
+
 </template>
 
 <script>
 
 import axios from 'axios'
-import { ref, reactive } from "vue";
 export default {
 
     mounted() {
-        this.loadData()
+        this.btnData('Solo Exhibitions')
     },
-
     methods: {
-        loadData() {
-            axios.get("/json/Exhibition.json").then((response) => {
-                var tmp = [];
-                this.rawData = response.data
-                this.rawData.forEach((value, index, array) => { tmp.push(value.subject); })
-                const set = new Set(tmp)
-                const newArr = [...set]
-                this.전시리스트 = newArr
-
-                newArr.forEach((value) => { this.mainImg(value) })
-
-                this.show = this.exhibitionData
+        btnData(data) {
+            axios.get("/json/" + data + ".json").then((response) => {
+                this.tableData = response.data
             })
-        },
-        mainImg(name) {
-            const filter = this.rawData.filter(v => v.subject == name)
-            var tmp = {
-                title: filter[0].subject,
-                period: filter[0].dayStart + ' ~ ' + filter[0].dayEnd,
-                location: filter[0].location,
-                fileName: filter[0].fileName
-            }
-            this.exhibitionData.push(tmp);
-
-        },
-
+        }
     },
     data() {
         return {
-            rawData: [],
-
-            전시리스트: [],
-            exhibitionData: reactive([]),
-            show: [],
-
-        }
-    },
-    setup() {
-        return {
-
+            title: 'Solo Exhibitions',
+            tableData: [],
+            columns: [{ data: "year" }, { data: "title" }, { data: "location" }],
+            options: {
+                // columnDefs: [{ targets: [0], width: '50px' }, { targets: [1], width: '200px' }, { targets: [2], width: '100px' }],
+                ordering: false,
+                // lengthMenu: [5],
+                lengthChange: false,
+                searching: false,
+                info: false,
+                order: false,
+                scrollY: '600px',
+                scrollCollapse: true,
+                paging: false,
+                // autoWidth: true,
+            },
         }
     }
 }
 </script>
 
 <style>
-#cardList {
-    margin-top: 100px;
-    width: 85%;
-}
 
-.cardFont {
-    font-size: 21px;
-    color: #58595b;
-}
-
-.cardFont-title {
-    font-weight: 900;
-}
-
-.viewMore {
-    -webkit-appearance: none;
-    border-radius: 0;
-    background-color: #58595b;
-    color: white;
-    font-size: 14px;
-}
-
-.exCard {
-    padding: 20px;
-    border: 0.4px solid rgba(85, 82, 82, 0.541);
-
-}
 </style>
