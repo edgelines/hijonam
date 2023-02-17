@@ -29,7 +29,7 @@ export default {
     data() {
         return {
 
-            sliderImg: ['Spirit 1-2022.jpg', 'Spring Sonata 1-2022.jpg', 'Spain Ronda 2-2022.jpg'],
+            sliderImg: ['Main1.jpg', 'Main2.jpg', 'Main3.jpg'],
 
         }
     },

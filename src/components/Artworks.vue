@@ -7,7 +7,7 @@
                     <!-- <div class="d-flex flex-column" @click="ArtworksBtnClass(classItem);"> -->
                     <div class="d-flex flex-column" @click="btnData(classItem);">
                         <div class="col">
-                            <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i][0]" />
+                            <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
                         </div>
                         <div class="row mt-1">
                             <div class="col imgTilteFont">
@@ -183,7 +183,7 @@ export default {
         mainImg(name) {
             const filter = this.allData.filter(v => v.class == name)
             const last = filter.length;
-            this.classListImg.push(filter[last - 1].fileName)
+            this.classListImg.push(filter[0].mainImg)
         },
         btnData(name) {
             const filter = this.allData.filter(v => v.class == name)
