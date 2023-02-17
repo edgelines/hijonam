@@ -5,7 +5,7 @@
             <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="5" :modelValue="2">
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
                     <!-- <div class="d-flex flex-column" @click="ArtworksBtnClass(classItem);"> -->
-                    <div class="d-flex flex-column" @click="btnData(classItem);">
+                    <div class="d-flex flex-column align-self-end" @click="btnData(classItem);">
                         <div class="col">
                             <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
                         </div>
@@ -347,7 +347,7 @@ export default {
 @media (min-width : 1100px) {
     .artworksCategory {
         width: 300px;
-        height: 300px;
+        height: auto;
     }
 
     .imgFilter-Div {
