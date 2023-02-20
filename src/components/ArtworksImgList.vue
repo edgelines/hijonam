@@ -1,11 +1,10 @@
 <template>
-    <justified-grid class="container" v-bind:gap="gap" v-bind:defaultDirection="defaultDirection"
-        v-bind:columnRange="columnRange" v-bind:rowRange="rowRange" v-bind:sizeRange="sizeRange"
-        v-bind:isCroppedSize="isCroppedSize" v-bind:displayedRow="displayedRow">
+    <justified-grid class="container" :gap="50" :defaultDirection="defaultDirection" :columnRange="[2, 5]" :rowRange="3"
+        :sizeRange="[50, 8000]" :isCroppedSize="true" :displayedRow="-1" :preserveUIOnDestroy="true">
 
-        <div class="image" v-for="(item, index) in imgDataList" key="item">
-            <img :src=item data-grid-content-offset="40" />
-            <div class="title">Item {index}</div>
+        <div class="image" data-grid-content-offset="100" v-for="(item, index) in imgData" key="item">
+            <img :src="'./img/Artworks/' + item.fileName[0]" loading="lazy" />
+            <!-- <div class="imgTilteFont text-start">{{ item.imgTitle }}</div> -->
         </div>
 
     </justified-grid>
@@ -13,13 +12,17 @@
 <script>
 import { JustifiedGrid } from "@egjs/vue-grid";
 export default {
+    props: {
+        imgList: Object,
+        imgData: Object,
+    },
     data() {
         return {
-            gap: 10,
+            gap: 50,
             defaultDirection: "end",
-            columnRange: [1, 8],
+            columnRange: [1, 5],
             rowRange: 0,
-            sizeRange: [200, 1000],
+            sizeRange: [500, 3000],
             isCroppedSize: false,
             displayedRow: -1,
             imgDataList: [
@@ -42,64 +45,19 @@ export default {
 };
 </script>
 <style>
-html,
-body {
-    position: relative;
-    height: 100%;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
 .container {
     overflow: hidden;
 }
 
-/* .item {
-    position: absolute;
-    width: 100px;
-    color: white;
-    text-align: center;
-}
-
-.item:nth-child(6n + 1) {
-    background: #f55;
-    height: 200px;
-}
-
-.item:nth-child(6n + 2) {
-    background: #7e7;
-    height: 300px;
-}
-
-.item:nth-child(6n + 3) {
-    background: #66e;
-    height: 200px;
-}
-
-.item:nth-child(6n + 4) {
-    background: #4af;
-    height: 100px;
-}
-
-.item:nth-child(6n + 5) {
-    background: #ed5;
-    height: 150px;
-}
-
-.item:nth-child(6n + 6) {
-    background: #d5e;
-    height: 130px;
-} */
-/* 
 .image {
     position: relative;
-    width: 100%;
+    width: 40%;
     font-size: 0;
 }
 
 .image img {
     width: 100%;
-} */
+}
 
 .title {
     height: 40px;

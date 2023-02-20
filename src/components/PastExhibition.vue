@@ -1,10 +1,5 @@
 <template>
     <div class="row Bio-Div">
-
-        <!-- <div class="col-sm-12 col-md-4 col-lg-3">
-                <img :src="profileIMG" class="img-fluid" />
-            </div> -->
-
         <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
             <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-lg"
@@ -33,8 +28,6 @@
         </div>
 
     </div>
-
-
 </template>
 
 <script>
@@ -75,6 +68,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

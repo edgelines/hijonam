@@ -1,5 +1,4 @@
 <template>
-
     <div class="row mx-auto" id="PastExhibitionDetail">
 
         <masonry-wall :items="detailPage_img" :ssr-columns="1" :column-width="400" :gap="40">
@@ -10,7 +9,6 @@
             </template>
         </masonry-wall>
     </div>
-
 </template>
 
 <script>
@@ -18,7 +16,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { reactive, ref } from "vue";
 export default {
     props: {
-        Exhibition: Object,
+
     },
     setup(props) {
         const route = useRoute()

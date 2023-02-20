@@ -5,9 +5,8 @@
                 <a class="navbar-brand">
                     <router-link class="nav-font-home" to="/">HIJO NAM</router-link>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
@@ -18,6 +17,9 @@
                         <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/artworks">ARTWORKS</router-link>
                         </a>
+                        <!-- <a class="nav-link mt-2">
+                                <router-link class="nav-font" to="/artworks2">ARTWORKS2</router-link>
+                            </a> -->
 
                         <li class="nav-item dropdown mt-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -37,14 +39,14 @@
                             <router-link class="nav-font" to="/portfolio">PORTFOLIO</router-link>
                         </a>
                         <!-- <a class="nav-link ms-4">
-                            <router-link class="nav-font" to="/News">News Press</router-link>
-                        </a>
-                        <a class="nav-link ms-4">
-                            <router-link class="nav-font" to="/pictures">Pictures</router-link>
-                        </a>
-                        <a class="nav-link ms-4">
-                            <router-link class="nav-font" to="/contact">Contact</router-link>
-                        </a> -->
+                                        <router-link class="nav-font" to="/News">News Press</router-link>
+                                    </a>
+                                    <a class="nav-link ms-4">
+                                        <router-link class="nav-font" to="/pictures">Pictures</router-link>
+                                    </a>
+                                    <a class="nav-link ms-4">
+                                        <router-link class="nav-font" to="/contact">Contact</router-link>
+                                    </a> -->
 
                     </div>
                 </div>
@@ -58,14 +60,13 @@
     </header>
     <div id="wrapper">
         <div class="container-fluid">
-            <router-view :ArtWorksImg="ArtWorksImg" :Exhibition="Exhibition" />
+            <router-view />
         </div>
     </div>
-    <!-- <footer class="bg-light">
+<!-- <footer class="bg-light">
         footer <br />
         instagram, kakao, facebook, youtube
-    </footer> -->
-</template>
+    </footer> --></template>
 
 <script>
 import axios from 'axios'
@@ -75,12 +76,12 @@ export default {
     components: {},
 
     mounted() {
-        axios.get("/json/Artworks.json").then((response) => {
-            this.ArtWorksImg = response.data
-        })
-        axios.get("/json/Exhibition.json").then((response) => {
-            this.Exhibition = response.data
-        })
+        // axios.get("/json/Artworks.json").then((response) => {
+        //     this.ArtWorksImg = response.data
+        // })
+        // axios.get("/json/Exhibition.json").then((response) => {
+        //     this.Exhibition = response.data
+        // })
 
     },
     data() {
