@@ -1,5 +1,4 @@
 <template>
-
     <div class="row mt-5">
         <Carousel :autoplay="3500" :wrap-around="true" :transition="15000">
             <Slide v-for="(item, i) in sliderImg" :key="item">
@@ -9,9 +8,7 @@
             </Slide>
         </Carousel>
     </div>
-    <!-- class="d-flex justify-content-center" -->
-
-</template>
+<!-- class="d-flex justify-content-center" --></template>
 
 <script>
 import 'vue3-carousel/dist/carousel.css'
@@ -29,7 +26,7 @@ export default {
     data() {
         return {
 
-            sliderImg: ['Main1.jpg', 'Main2.jpg', 'Main3.jpg'],
+            sliderImg: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg',],
 
         }
     },

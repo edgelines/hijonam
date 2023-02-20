@@ -1,10 +1,8 @@
 <template>
-    <!-- Img Swiper -->
     <div class="row mt-5">
         <div class="col">
             <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="5" :modelValue="2">
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
-                    <!-- <div class="d-flex flex-column" @click="ArtworksBtnClass(classItem);"> -->
                     <div class="d-flex flex-column align-self-end" @click="btnData(classItem);">
                         <div class="col">
                             <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
@@ -16,6 +14,9 @@
                         </div>
                     </div>
                 </Slide>
+                <template #addons>
+                    <Navigation />
+                </template>
             </Carousel>
         </div>
     </div>
@@ -29,9 +30,6 @@
 
                 <div class="row">
                     <form class="box">
-                        <!-- <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgYear.Min" :max="imgYear.Max"
-                            :keep-just-significant-figures="false" id="timePeriod">
-                        </RangeSlider> -->
                         <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
                             :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
                             id="timePeriod">
@@ -70,8 +68,8 @@
                 <div class="row">
                     <form class="box">
                         <!-- <RangeSlider v-model="imgRange" bar-color="#bebefe" :min="imgYear.Min" :max="imgYear.Max"
-                            :keep-just-significant-figures="false" id="timePeriod">
-                        </RangeSlider> -->
+                                                            :keep-just-significant-figures="false" id="timePeriod">
+                                                        </RangeSlider> -->
                         <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
                             :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
                             id="timePeriod">
@@ -114,7 +112,7 @@
             <div class="row mt-4">
                 <!-- <div class="row d-flex align-items-end"> -->
                 <div class="row">
-                    <masonry-wall :items="imgList" :ssr-columns="1" :column-width="420" :gap="40">
+                    <masonry-wall :items="imgList" :ssr-columns="20" :column-width="400" :gap="40">
                         <template #default="{ item, index }">
                             <div class="mb-4" @click="$router.push('/artworks/' + imgData[index].imgID)">
                                 <img class="img-fluid mb-1" :src="'/img/Artworks/' + item[0]" />
@@ -134,7 +132,7 @@
 
 <script>
 import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide } from 'vue3-carousel'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
 
 import axios from 'axios'
 import '../assets/style.css'
@@ -148,7 +146,7 @@ export default {
         // Swiper, SwiperSlide,
         // MasonryWall,
         RangeSlider,
-        Carousel, Slide,
+        Carousel, Slide, Navigation
     },
     props: {
         // ArtWorksImg: Object,
