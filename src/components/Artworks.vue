@@ -19,71 +19,44 @@
     </div>
 
     <div class="row Artworks-Div-Bottom">
-
-        <div class="col-md-9 col-lg-9 mt-5">
-
-
-            <div class="row" v-if="Object.keys(selectImg.fileName).length > 1">
-                <div class="col-2 thumbnail">
-                    <div class="row thumbnail-img mx-auto" v-for="(item, i) in selectImg.fileName" :key="item">
-                        <img :src="'/img/Artworks/' + item" @click="ArtworksDetailClick(item)" />
-                    </div>
+        <div id="ArtworksContent" class="col-sm-12 col-md-2 col-lg-2 ps-5 pt-2 border-end">
+            <div class="row text-start mt-3">
+                <h4 class="fw-900">{{ selectImg.imgTitle }}</h4>
+                <div class="mt-1"> {{ selectImg.subject }} </div>
+                <div class="mt-1">
+                    Height : {{ parseInt(selectImg['imgSize-w'] * 0.393701) }} inches / {{
+                        selectImg['imgSize-w']
+                    }} cm
+                </div>
+                <div>
+                    Width : {{ parseInt(selectImg['imgSize-h'] * 0.393701) }} inches / {{
+                        selectImg['imgSize-h']
+                    }} cm
                 </div>
 
-                <div class="col-10 selectImg border">
-                    <div class="row">
-                        <img :src="mainImgDiv.img" class="row text-center" />
-                    </div>
-
-                    <div class="row text-start mt-3">
-                        <h4 class="fw-900">{{ selectImg.imgTitle }}</h4>
-                        <div class="mt-1"> {{ selectImg.subject }} </div>
-                        <div class="mt-1">
-                            Height : {{ parseInt(selectImg['imgSize-w'] * 0.393701) }} inches / {{
-                                selectImg['imgSize-w']
-                            }} cm
-                        </div>
-                        <div>
-                            Width : {{ parseInt(selectImg['imgSize-h'] * 0.393701) }} inches / {{
-                                selectImg['imgSize-h']
-                            }} cm
-                        </div>
-
-                        <div class="mt-1">
-                            Executed {{ selectImg.imgYear }}
-                        </div>
-                    </div>
+                <div class="mt-1">
+                    Executed {{ selectImg.imgYear }}
                 </div>
             </div>
-
-            <div class="row" v-else>
-                <div class="border ">
-                    <div class="justify-content-center">
-                        <img :src="mainImgDiv.img" class="singleMainImg" />
-
-                        <div class="text-start">
-                            <h4 class="fw-900 mt-3">{{ selectImg.imgTitle }}</h4>
-                            <div class="mt-1"> {{ selectImg.subject }} </div>
-                            <div class="mt-1">
-                                Height : {{ parseInt(selectImg['imgSize-w'] * 0.393701) }} inches / {{
-                                    selectImg['imgSize-w']
-                                }} cm
-                            </div>
-                            <div>
-                                Width : {{ parseInt(selectImg['imgSize-h'] * 0.393701) }} inches / {{
-                                    selectImg['imgSize-h']
-                                }} cm
-                            </div>
-
-                            <div class="mt-1">
-                                Executed {{ selectImg.imgYear }}
-                            </div>
-                        </div>
+            <div class="row mt-5" v-if="Object.keys(selectImg.fileName).length > 1">
+                <div class="col thumbnail">
+                    <div class="row thumbnail-img " v-for="(item, i) in selectImg.fileName" :key="item">
+                        <img :src="'/img/Artworks/' + item" @click="ArtworksDetailClick(item)" />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-3 col-lg-3">
+
+        <div id="BigImg" class="col-md-8 col-lg-8">
+
+            <div class="row">
+                <div class="selectImg d-flex justify-content-center">
+                    <img :src="mainImgDiv.img" />
+                </div>
+            </div>
+
+        </div>
+        <div id="Filter" class="col-sm-12 col-md-2 col-lg-2">
             <!-- Filter by -->
             <div class="col-12" id="Mobile-Filter">
                 <div class="imgFilter-Div">
@@ -321,13 +294,22 @@ export default {
     }
 
     .imgFilter-Div {
-        width: 400px;
+        width: 280px;
         /* border: 1px solid #2c3e50; */
         margin-left: 10px;
     }
 
     .Artworks-Div-Bottom {
         margin-top: 50px;
+    }
+
+    #ArtworksContent {
+        margin-top: 168px;
+        padding: auto;
+    }
+
+    #BigImg {
+        margin-top: 168px;
     }
 
     #timePeriod {
@@ -339,12 +321,7 @@ export default {
     }
 
     .selectImg>img {
-        width: 70%;
-        height: auto;
-    }
-
-    .singleMainImg {
-        width: 80%;
+        width: 90%;
         height: auto;
     }
 
@@ -356,15 +333,15 @@ export default {
     }
 
     .thumbnail-img {
-        width: 170px;
+        width: 230px;
         /* height: 100px; */
-        margin-bottom: 10px;
+        margin-bottom: 25px;
     }
 
     .imgItem {
         /* position: absolute; */
-        width: 140px;
-        height: 140px;
+        width: 90px;
+        height: 90px;
         /* top: 50%;
         left: 50%; */
         /* transform: translate(-50%, -50%); */
