@@ -6,6 +6,7 @@ import Artworks from './components/Artworks.vue';
 // import ArworksDetail from "./components/ArworksDetail.vue";
 import PastExhibition from './components/PastExhibition.vue';
 import PastExhibitionDetail from './components/PastExhibitionDetail.vue';
+import Current from './components/Current.vue'
 import Upcoming from './components/Upcoming.vue'
 import Portfolio from './components/Portfolio.vue'
 import News from './components/News.vue'
@@ -24,6 +25,7 @@ const routes = [
     { path: "/pastexhibtion", component: PastExhibition, },
     { path: "/pastexhibtion/:id(\\d+)", component: PastExhibitionDetail, },
 
+    { path: "/current", component: Current, },
     { path: "/upcoming", component: Upcoming, },
     { path: "/portfolio", component: Portfolio, },
     { path: "/news", component: News, },

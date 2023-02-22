@@ -1,7 +1,7 @@
 <template>
     <div class="row Bio-Div">
         <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
-            <div class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
+            <div id="ExhibitionBtnGroup" class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-lg"
                     @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo</button>
                 <button type="button" class="btn btn-lg"
@@ -68,4 +68,26 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+@media (min-width : 1100px) {
+    #ExhibitionBtnGroup {
+        margin-top: 0px;
+    }
+
+    .btn-bd-primary {
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet);
+        --bs-btn-border-color: var(--bd-violet);
+        --bs-btn-border-radius: .5rem;
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+        --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+        --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+    }
+
+}
+</style>

@@ -31,13 +31,16 @@
                                     <router-link class="nav-font" to="/pastexhibtion">Past Exhibition</router-link>
                                 </a>
                                 <a class="dropdown-item">
+                                    <router-link class="nav-font" to="/current">Current Exhibition</router-link>
+                                </a>
+                                <a class="dropdown-item">
                                     <router-link class="nav-font" to="/upcoming">Upcoming Exhibition</router-link>
                                 </a>
                             </ul>
                         </li>
-                        <a class="nav-link mt-2">
+                        <!-- <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/portfolio">PORTFOLIO</router-link>
-                        </a>
+                        </a> -->
                         <!-- <a class="nav-link ms-4">
                                         <router-link class="nav-font" to="/News">News Press</router-link>
                                     </a>

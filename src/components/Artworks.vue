@@ -75,7 +75,7 @@
             </div>
             <!-- Filter by -->
             <div class="row" id="nonMobile-Filter">
-                <div class="imgFilter-Div border">
+                <div class="imgFilter-Div">
                     <div id="WorkYearText" class="mt-4 text-start FilterTime-Div">Work Year</div>
                     <div class="row">
                         <form class="box">
@@ -91,14 +91,14 @@
             <!-- Img List -->
 
             <div class="row">
-                <h4 class="text-start mb-4 imgTilteFont">
+                <h4 id="categoryText" class="text-start mb-4 imgTilteFont">
                     {{ (imgData.length).toLocaleString('kr') }} {{ selectClass }} works
                 </h4>
                 <hr />
             </div>
 
             <div class="row mt-4">
-                <div class="col-md-4 col-lg-4 mb-3" v-for="(item, index) in imgData" key="item">
+                <div class="col-md-4 col-lg-4 mb-2" v-for="(item, index) in imgData" key="item">
                     <img class="imgItem" :src="'./img/Artworks/' + item.fileName[0]" @click="imgSelect(item)" />
                 </div>
                 <!-- <div class="row d-flex align-items-end"> -->
@@ -311,9 +311,19 @@ export default {
         margin-top: 168px;
     }
 
+    #Filter {
+        position: relative;
+        left: -30px;
+    }
+
     #WorkYearText {
         position: relative;
         left: -10px;
+    }
+
+    #categoryText {
+        position: relative;
+        top: 7px;
     }
 
     #timePeriod {
@@ -344,8 +354,8 @@ export default {
 
     .imgItem {
         /* position: absolute; */
-        width: 90px;
-        height: 90px;
+        width: 97px;
+        height: 97px;
         /* top: 50%;
         left: 50%; */
         /* transform: translate(-50%, -50%); */
