@@ -109,7 +109,7 @@ export default {
 }
 
 
-@media (min-width : 1100px) {
+@media (min-width : 1400px) {
     #Bio-Table-MainTitle {
         margin-bottom: 50px;
     }

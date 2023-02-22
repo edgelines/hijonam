@@ -38,6 +38,10 @@
                                 </a>
                             </ul>
                         </li>
+
+                        <a class="nav-link mt-2">
+                            <router-link class="nav-font" to="/contact">CONTACT</router-link>
+                        </a>
                         <!-- <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/portfolio">PORTFOLIO</router-link>
                         </a> -->

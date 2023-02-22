@@ -267,10 +267,16 @@ export default {
     }
 }
 
-@media (max-width : 1099px) {
+@media (max-width : 1399px) {
     .artworksCategory {
-        width: 150px;
-        height: 150px;
+        width: 230px !important;
+        height: auto;
+    }
+
+    .imgFilter-Div {
+        width: 200px;
+        /* border: 1px solid #2c3e50; */
+        margin-left: 10px;
     }
 
     .imgTilteFont {
@@ -284,10 +290,39 @@ export default {
     #Mobile-Filter {
         display: none;
     }
+
+
+    .selectImg>img {
+        width: 90%;
+        height: auto;
+    }
+
+    .thumbnail {
+        z-index: 3;
+        /* width: 230px; */
+        margin-top: 0px;
+        /* margin-left: 180px; */
+    }
+
+    .thumbnail-img {
+        width: 230px;
+        /* height: 100px; */
+        margin-bottom: 25px;
+    }
+
+    .imgItem {
+        /* position: absolute; */
+        width: 65px;
+        height: 65px;
+        /* top: 50%;
+        left: 50%; */
+        /* transform: translate(-50%, -50%); */
+        object-fit: cover;
+    }
 }
 
 
-@media (min-width : 1100px) {
+@media (min-width : 1400px) {
     .artworksCategory {
         width: 300px;
         height: auto;

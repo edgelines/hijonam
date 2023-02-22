@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+// import './assets/scss/button.scss'
 
 import DataTable from 'datatables.net-vue3'
 import DataTablesLib from 'datatables.net';

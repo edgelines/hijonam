@@ -8,6 +8,7 @@
                     @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
                 </button>
             </div>
+            <!-- <button type="button" class="btn btn-bd-primary">Sample</button> -->
 
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8">
@@ -69,15 +70,15 @@ export default {
 </script>
 
 <style>
-@media (min-width : 1100px) {
+@media (min-width : 1400px) {
     #ExhibitionBtnGroup {
         margin-top: 0px;
     }
 
-    .btn-bd-primary {
+    /* .btn-bd-primary {
         --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet);
+        --bs-btn-color: var(white);
+        --bs-btn-bg: violet;
         --bs-btn-border-color: var(--bd-violet);
         --bs-btn-border-radius: .5rem;
         --bs-btn-hover-color: var(--bs-white);
@@ -87,7 +88,13 @@ export default {
         --bs-btn-active-color: var(--bs-btn-hover-color);
         --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
         --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
-    }
-
+    } */
 }
 </style>
+<!-- 
+<style >
+@import "@/scss/variables";
+@import '../assets/scss/button.scss';
+
+
+</style> -->
