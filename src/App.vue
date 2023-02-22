@@ -156,7 +156,6 @@ footer {
         font-size: 20px;
         margin-top: 50px !important;
         margin-right: 50px;
-
     }
 
 
