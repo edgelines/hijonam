@@ -76,7 +76,7 @@
             <!-- Filter by -->
             <div class="row" id="nonMobile-Filter">
                 <div class="imgFilter-Div">
-                    <div id="WorkYearText" class="mt-4 text-start FilterTime-Div">Work Year</div>
+                    <div id="WorkYearText" class="mt-4 text-start imgTilteFont FilterTime-Div">Work Year</div>
                     <div class="row">
                         <form class="box">
                             <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
@@ -94,7 +94,7 @@
                 <h4 id="categoryText" class="text-start mb-4 imgTilteFont">
                     {{ (imgData.length).toLocaleString('kr') }} {{ selectClass }} works
                 </h4>
-                <hr />
+                <hr id="Div-Hr" />
             </div>
 
             <div class="row mt-4">
@@ -323,7 +323,13 @@ export default {
 
     #categoryText {
         position: relative;
-        top: 7px;
+        top: 10px;
+    }
+
+    #Div-Hr {
+        position: relative;
+        left: 10px;
+        width: 312px;
     }
 
     #timePeriod {
