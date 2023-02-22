@@ -1,5 +1,5 @@
 <template>
-    <div class="row mt-5">
+    <div id="Home-Div" class="row mt-5">
         <Carousel :autoplay="3500" :wrap-around="true" :transition="15000">
             <Slide v-for="(item, i) in sliderImg" :key="item">
                 <div class="d-flex align-self-center flex-wrap mt-2">
@@ -93,6 +93,12 @@ export default {
     .Main-Mobile {
         width: 350px;
         height: 350px;
+    }
+}
+
+@media (min-width : 1100px) {
+    #Home-Div {
+        margin-top: 125px !important;
     }
 }
 </style>

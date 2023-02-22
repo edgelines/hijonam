@@ -19,7 +19,7 @@
     </div>
 
     <div class="row Artworks-Div-Bottom">
-        <div id="ArtworksContent" class="col-sm-12 col-md-2 col-lg-2 ps-5 pt-2 border-end">
+        <div id="ArtworksContent" class="col-sm-12 col-md-2 col-lg-2 ps-5 pt-2">
             <div class="row text-start mt-3">
                 <h4 class="fw-900">{{ selectImg.imgTitle }}</h4>
                 <div class="mt-1"> {{ selectImg.subject }} </div>
@@ -304,8 +304,7 @@ export default {
     }
 
     #ArtworksContent {
-        margin-top: 168px;
-        padding: auto;
+        margin-top: 230px;
     }
 
     #BigImg {
