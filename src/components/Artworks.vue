@@ -26,7 +26,12 @@
     <div id="Artworks-Div-Bottom" class="row">
         <v-row>
             <v-col cols="10" class="d-flex align-items-end flex-row-reverse">
-                <input id="BigImgSize" v-model="BigImgSize" type="range" style="width: 200px;" min="0" max="100" />
+                <div>
+                    <input id="BigImgSize" v-model="BigImgSize1" type="range" style="width: 200px;" min="60" max="100" />
+                </div>
+                <div id="BigImgSizeLabel">
+                    Img Size
+                </div>
             </v-col>
             <v-col cols="2">
                 <!-- Filter by -->
@@ -92,13 +97,12 @@
 
         <div id="BigImg" class="col-md-8 col-lg-8">
 
-            <div class="row">
+            <v-img :src="mainImgDiv.img" :width="BigImgSize1 + '%'" class="text-center"></v-img>
+            <!-- <div class="row">
                 <div class="selectImg d-flex justify-content-center">
-                    <img :src="mainImgDiv.img" :width="BigImgSize" />
-                    <!-- <v-img :src="mainImgDiv.img" :width="BigImgSize"></v-img> -->
+                    <img :src="mainImgDiv.img" />
                 </div>
-
-            </div>
+            </div> -->
 
         </div>
         <div id="Filter" class="col-sm-12 col-md-2 col-lg-2">
@@ -247,7 +251,7 @@ export default {
             imgYear: reactive({ Max: '', Min: '' }),
             // imgRange: [],
             imgRange: reactive([]),
-            BigImgSize: 100,
+            BigImgSize1: 90,
         }
     },
 }
@@ -358,6 +362,11 @@ export default {
     #BigImgSize {
         position: relative;
         right: 42px;
+    }
+
+    #BigImgSizeLabel {
+        position: relative;
+        right: 60px;
     }
 
     #Artworks-Div-Bottom {

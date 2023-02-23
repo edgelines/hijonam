@@ -15,8 +15,11 @@
         </v-card-text>
     </v-card>
 
+    <v-img :width="ttttt + '%'" cover src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" />
+    <img :width="ttttt" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" />
+
     <div>
-        <input type="range" />
+        <input type="range" v-model="ttttt" min='0' max="100" />
     </div>
 </template>
 <script>
@@ -26,6 +29,7 @@ export default {
         slider2: 50,
         slider3: 100,
         value: [20, 40],
+        ttttt: 30,
     }),
 }
 </script>
