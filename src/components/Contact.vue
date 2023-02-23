@@ -5,15 +5,15 @@
         </h3>
 
         <div id="email" class="col-6 text-start">
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-2 font">U.S</div>
                 <div class="col font">hijonamart@gmail.com</div>
             </div>
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-2 font">Europe</div>
                 <div class="col font">minatavsan@gmail.com</div>
             </div>
-            <div class="row mb-5">
+            <div class="row">
                 <div class="col-2 font">Korea</div>
                 <div class="col font">spacetailor83@gmail.com</div>
             </div>
@@ -71,7 +71,7 @@ export default {
 
 <style>
 #Contact {
-    margin-left: 100px;
+    margin-left: 170px;
     position: relative;
     top: 150px;
 
@@ -93,6 +93,10 @@ export default {
     /* position: relative;
     left: 100px;
     top: 50px; */
+}
+
+#email>div {
+    margin-bottom: 40px;
 }
 
 footer {
