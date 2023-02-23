@@ -17,11 +17,11 @@
                         <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/artworks">ARTWORKS</router-link>
                         </a>
-                        <!-- <a class="nav-link mt-2">
-                                <router-link class="nav-font" to="/artworks2">ARTWORKS2</router-link>
-                            </a> -->
+                        <a class="nav-link mt-2">
+                            <router-link class="nav-font" to="/exhibition">EXHIBITION</router-link>
+                        </a>
 
-                        <li class="nav-item dropdown mt-2">
+                        <!-- <li class="nav-item dropdown mt-2">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <span class="nav-font">EXHIBITION</span>
@@ -37,7 +37,7 @@
                                     <router-link class="nav-font" to="/upcoming">Upcoming Exhibition</router-link>
                                 </a>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <a class="nav-link mt-2">
                             <router-link class="nav-font" to="/contact">CONTACT</router-link>
@@ -70,9 +70,10 @@
             <router-view />
         </div>
     </div>
-<!-- <footer class="fixed-bottom bg-light">
+    <!-- <footer class="fixed-bottom bg-light">
         footer <br />
-    </footer> --></template>
+    </footer> -->
+</template>
 
 <script>
 import axios from 'axios'

@@ -11,10 +11,14 @@ import router from './router'
 import jQuery from 'jquery'
 import MasonryWall from '@yeger/vue-masonry-wall'
 
+import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
+// import './main.scss'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+// import { aliases, fa } from 'vuetify/iconsets/fa'
+// import { mdi } from 'vuetify/iconsets/mdi'
 
 
 const app = createApp(App);
@@ -22,6 +26,9 @@ const app = createApp(App);
 const vuetify = createVuetify({
     components,
     directives,
+    icons: {
+        defaultSet: 'mdi'
+    },
 })
 
 global.$ = jQuery;

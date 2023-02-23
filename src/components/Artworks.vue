@@ -1,24 +1,67 @@
 <template>
-    <div class="row mt-5">
-        <div class="col">
+    <v-row class="mt-5">
+        <v-col>
             <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="5" :modelValue="2">
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
-                    <div class="d-flex flex-column align-self-end" @click="btnData(classItem);">
-                        <div class="col">
-                            <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col imgTilteFont">
-                                {{ classItem }}
+                    <v-hover v-slot="{ isHovering, props }" open-delay="100">
+                        <v-card :elevation="isHovering ? 16 : 5" :class="{ 'on-hover': isHovering }"
+                            class="mx-auto rounded-lg d-flex flex-column align-self-end" v-bind="props">
+                            <div @click="btnData(classItem);">
+                                <div class="col">
+                                    <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="row mt-1">
+                                <div class="col imgTilteFont">
+                                    {{ classItem }}
+                                </div>
+                            </div>
+                        </v-card>
+                    </v-hover>
                 </Slide>
             </Carousel>
-        </div>
-    </div>
+        </v-col>
+    </v-row>
 
     <div id="Artworks-Div-Bottom" class="row">
+        <v-row>
+            <v-col cols="10" class="d-flex align-items-end flex-row-reverse">
+                <input id="BigImgSize" v-model="BigImgSize" type="range" style="width: 200px;" min="0" max="100" />
+            </v-col>
+            <v-col cols="2">
+                <!-- Filter by -->
+                <div class="col-12" id="Mobile-Filter">
+                    <div class="imgFilter-Div">
+                        <div class="row mb-2 text-center">Filter by</div>
+                        <div class="mt-4 text-start FilterTime-Div">Time Period</div>
+
+                        <!-- <div class="row">
+                        <form class="box">
+                            <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
+                                :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
+                                id="timePeriod">
+                            </RangeSlider>
+                        </form>
+                    </div> -->
+                    </div>
+                </div>
+                <!-- Filter by -->
+                <div class="row" id="nonMobile-Filter">
+                    <div class="imgFilter-Div">
+                        <div id="WorkYearText" class="mt-4 text-start imgTilteFont FilterTime-Div">Work Year</div>
+                        <div class="row">
+                            <form class="box">
+                                <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
+                                    :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
+                                    id="timePeriod">
+                                </RangeSlider>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </v-col>
+        </v-row>
+
         <div id="ArtworksContent" class="col-sm-12 col-md-2 col-lg-2 ps-5 pt-2">
             <div class="row text-start mt-3">
                 <h4 class="fw-900">{{ selectImg.imgTitle }}</h4>
@@ -51,45 +94,15 @@
 
             <div class="row">
                 <div class="selectImg d-flex justify-content-center">
-                    <img :src="mainImgDiv.img" />
+                    <img :src="mainImgDiv.img" :width="BigImgSize" />
+                    <!-- <v-img :src="mainImgDiv.img" :width="BigImgSize"></v-img> -->
                 </div>
+
             </div>
 
         </div>
         <div id="Filter" class="col-sm-12 col-md-2 col-lg-2">
-            <!-- Filter by -->
-            <div class="col-12" id="Mobile-Filter">
-                <div class="imgFilter-Div">
-                    <div class="row mb-2 text-center">Filter by</div>
-                    <div class="mt-4 text-start FilterTime-Div">Time Period</div>
-
-                    <!-- <div class="row">
-                        <form class="box">
-                            <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
-                                :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
-                                id="timePeriod">
-                            </RangeSlider>
-                        </form>
-                    </div> -->
-                </div>
-            </div>
-            <!-- Filter by -->
-            <div class="row" id="nonMobile-Filter">
-                <div class="imgFilter-Div">
-                    <div id="WorkYearText" class="mt-4 text-start imgTilteFont FilterTime-Div">Work Year</div>
-                    <div class="row">
-                        <form class="box">
-                            <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
-                                :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
-                                id="timePeriod">
-                            </RangeSlider>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
             <!-- Img List -->
-
             <div class="row">
                 <h4 id="categoryText" class="text-start mb-4 imgTilteFont">
                     {{ (imgData.length).toLocaleString('kr') }} {{ selectClass }} works
@@ -99,9 +112,15 @@
 
             <div class="row mt-4">
                 <div class="col-md-4 col-lg-4 mb-2" v-for="(item, index) in imgData" key="item">
-                    <img class="imgItem" :src="'./img/Artworks/' + item.fileName[0]" @click="imgSelect(item)" />
+                    <v-hover v-slot="{ isHovering, props }" open-delay="100">
+                        <v-card :elevation="isHovering ? 16 : 5" :class="{ 'on-hover': isHovering }"
+                            class="mx-auto rounded-lg" max-width="350" v-bind="props">
+                            <img class="imgItem" :elevation="isHovering ? 16 : 2"
+                                :src="'./img/Artworks/' + item.fileName[0]" @click="imgSelect(item)" />
+                        </v-card>
+                    </v-hover>
+
                 </div>
-                <!-- <div class="row d-flex align-items-end"> -->
             </div>
 
 
@@ -195,7 +214,6 @@ export default {
             (this.imgRange[0] <= value.imgYear &
                 value.imgYear <= this.imgRange[1]))
             this.imgData = filter
-            console.log(this.imgRange);
             var tmp = []
             this.imgData.forEach((value) => {
                 tmp.push(value.fileName)
@@ -229,7 +247,7 @@ export default {
             imgYear: reactive({ Max: '', Min: '' }),
             // imgRange: [],
             imgRange: reactive([]),
-
+            BigImgSize: 100,
         }
     },
 }
@@ -337,16 +355,24 @@ export default {
         margin-left: 10px;
     }
 
+    #BigImgSize {
+        position: relative;
+        right: 42px;
+    }
+
     #Artworks-Div-Bottom {
         margin-top: 50px;
     }
 
     #ArtworksContent {
-        margin-top: 230px;
+        margin-top: 85px;
+        position: relative;
+        left: 40px;
+
     }
 
     #BigImg {
-        margin-top: 168px;
+        margin-top: 45px;
     }
 
     #Filter {

@@ -4,10 +4,8 @@ import Bio from './components/Bio.vue';
 import Artworks from './components/Artworks.vue';
 // import Artworks2 from './components/Artworks_old.vue';
 // import ArworksDetail from "./components/ArworksDetail.vue";
-import PastExhibition from './components/PastExhibition.vue';
-// import PastExhibitionDetail from './components/PastExhibitionDetail.vue';
-import Current from './components/Current.vue'
-import Upcoming from './components/Upcoming.vue'
+import Exhibition from './components/Exhibition.vue';
+
 import Portfolio from './components/Portfolio.vue'
 import News from './components/News.vue'
 import Pictures from './components/Pictures.vue'
@@ -21,12 +19,8 @@ const routes = [
     { path: "/artworks", component: Artworks, },
     // { path: "/artworks2", component: Artworks2, },
     // { path: "/artworks/:id(\\d+)", component: ArworksDetail, },
+    { path: "/exhibition", component: Exhibition, },
 
-    { path: "/pastexhibtion", component: PastExhibition, },
-
-
-    { path: "/current", component: Current, },
-    { path: "/upcoming", component: Upcoming, },
     { path: "/portfolio", component: Portfolio, },
     { path: "/news", component: News, },
     { path: "/pictures", component: Pictures, },
