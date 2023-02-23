@@ -42,12 +42,20 @@
         </table> -->
     </div>
 
-    <footer class="border-top p-5 footerfont fixed-bottom text-start">
-        The content of this site is for personal use only. Neither text nor images may be reproduced in any form without the
-        permission. <br />You may download content solely for your personal use for non-commercial purposes. You may not
-        modify or
-        further reproduce the content for any purpose whatsoever.<br /> You must request and obtain express permission from
-        HijoNam Studio for all other uses of content.
+    <footer class="border-top p-5 footerfont fixed-bottom">
+        <div class="col-9 mx-auto">
+            <div class="text-start">
+                The content of this site is for personal use only. Neither text nor images may be reproduced in any form
+                without
+                the
+                permission. You may download content solely for your personal use for non-commercial purposes. You may not
+                modify or
+                further reproduce the content for any purpose whatsoever. You must request and obtain express permission
+                from
+                HijoNam Studio for all other uses of content.
+
+            </div>
+        </div>
     </footer>
 </template>
 
@@ -105,7 +113,7 @@ footer {
 }
 
 .footerfont {
-    font-size: 22px;
+    font-size: 18px;
 }
 
 /* #Contact>table>tbody>tr>td {

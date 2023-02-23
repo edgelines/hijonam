@@ -111,12 +111,20 @@
 
     </div>
 
-    <div id="footer" class="border-top p-5 footerfont text-start">
-        The content of this site is for personal use only. Neither text nor images may be reproduced in any form without the
-        permission. <br />You may download content solely for your personal use for non-commercial purposes. You may not
-        modify or
-        further reproduce the content for any purpose whatsoever.<br /> You must request and obtain express permission from
-        HijoNam Studio for all other uses of content.
+    <div id="footer" class="border-top p-5 footerfont ">
+        <div class="col-9 mx-auto">
+            <div class="text-start">
+                The content of this site is for personal use only. Neither text nor images may be reproduced in any form
+                without
+                the
+                permission. You may download content solely for your personal use for non-commercial purposes. You may not
+                modify or
+                further reproduce the content for any purpose whatsoever. You must request and obtain express permission
+                from
+                HijoNam Studio for all other uses of content.
+
+            </div>
+        </div>
     </div>
 </template>
 
@@ -415,6 +423,12 @@ export default {
         position: relative;
         top: 150px;
     }
+
+    #footer>div {
+        text-align: center;
+        align-items: center;
+    }
+
 
 }
 </style>
