@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="row Artworks-Div-Bottom">
+    <div id="Artworks-Div-Bottom" class="row">
         <div id="ArtworksContent" class="col-sm-12 col-md-2 col-lg-2 ps-5 pt-2">
             <div class="row text-start mt-3">
                 <h4 class="fw-900">{{ selectImg.imgTitle }}</h4>
@@ -63,14 +63,14 @@
                     <div class="row mb-2 text-center">Filter by</div>
                     <div class="mt-4 text-start FilterTime-Div">Time Period</div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <form class="box">
                             <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="imgYear.Min" :max="imgYear.Max"
                                 :keep-just-significant-figures="false" @update:model-value="imgYearRange(selectClass)"
                                 id="timePeriod">
                             </RangeSlider>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- Filter by -->
@@ -137,26 +137,11 @@ import '../assets/style.css'
 import RangeSlider from 'vue-simple-range-slider';
 import 'vue-simple-range-slider/css';
 import { ref, reactive, defineComponent } from "vue";
-// import MasonryWall from '@yeger/vue-masonry-wall'
-// import { MasonryGrid, JustifiedGrid, FrameGrid, packingGrid } from '@egjs/vue-grid'
-// import { MasonryGrid } from '@egjs/vue-grid';
-// import ArtworksImgList from './ArtworksImgList.vue';
-import ArtworksDetail from './ArworksDetail.vue'
+
 export default {
-    components: {
-        // MasonryWall,
-        RangeSlider,
-        Carousel, Slide,
-        ArtworksDetail,
-    },
-    // props: {
-    //     ArtWorksImg: Object,
-    // },
+    components: { RangeSlider, Carousel, Slide, },
 
     created() { this.loadData(); },
-    computed: {
-
-    },
     methods: {
         loadData() {
             axios.get("/json/Artworks.json").then((response) => {
@@ -198,18 +183,19 @@ export default {
             if (Min == Max) {
                 return Min = Max - 1
             }
-            this.imgRange = [Min, Max]
             this.imgYear.Min = Min
             this.imgYear.Max = Max
 
+            var lst = [Min, Max]
+            this.imgRange = lst
         },
         imgYearRange(name) {
-            var filter = this.allData.filter(value => value.class == name);
-            filter = filter.filter(value => (
-                value.imgYear >= this.imgRange[0] &&
-                value.imgYear <= this.imgRange[1])
-            );
+            var filter = this.allData.filter(value => value.class == name)
+            filter = filter.filter(value =>
+            (this.imgRange[0] <= value.imgYear &
+                value.imgYear <= this.imgRange[1]))
             this.imgData = filter
+            console.log(this.imgRange);
             var tmp = []
             this.imgData.forEach((value) => {
                 tmp.push(value.fileName)
@@ -241,7 +227,8 @@ export default {
             mainImgDiv: reactive({ img: '' }),
 
             imgYear: reactive({ Max: '', Min: '' }),
-            imgRange: '',
+            // imgRange: [],
+            imgRange: reactive([]),
 
         }
     },
@@ -299,7 +286,7 @@ export default {
         font-size: 14px;
     }
 
-    .Artworks-Div-Bottom {
+    #Artworks-Div-Bottom {
         margin-top: 50px;
     }
 
@@ -350,7 +337,7 @@ export default {
         margin-left: 10px;
     }
 
-    .Artworks-Div-Bottom {
+    #Artworks-Div-Bottom {
         margin-top: 50px;
     }
 
@@ -383,9 +370,6 @@ export default {
         width: 312px;
     }
 
-    #timePeriod {
-        width: 100%;
-    }
 
     #Mobile-Filter {
         display: none;

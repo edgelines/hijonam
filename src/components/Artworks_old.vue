@@ -186,11 +186,8 @@ export default {
         // MasonryGrid,
         // ArtworksImgList
     },
-    props: {
-        ArtWorksImg: Object,
-    },
 
-    mounted(props) { this.loadData(); },
+    mounted() { this.loadData(); },
     computed: {
         sizePeriodGuideH() {
             return parseInt((this.rangeImg.H / this.imgSizeFixed.H) * 100)
@@ -202,30 +199,30 @@ export default {
     methods: {
         loadData() {
 
-            var tmp = [], tmpImg = [];
-            this.allData = this.ArtWorksImg
-            this.allData.forEach((value, index, array) => { tmp.push(value.class); })
-            const set = new Set(tmp)
-            const newArr = [...set]
-            this.classList = newArr
-            newArr.forEach((value) => { this.mainImg(value) })
-            this.btnData(Object.values(this.classList)[0]);
+            // var tmp = [], tmpImg = [];
+            // this.allData = this.ArtWorksImg
+            // this.allData.forEach((value, index, array) => { tmp.push(value.class); })
+            // const set = new Set(tmp)
+            // const newArr = [...set]
+            // this.classList = newArr
+            // newArr.forEach((value) => { this.mainImg(value) })
+            // this.btnData(Object.values(this.classList)[0]);
 
-            // axios.get("/json/Artworks.json").then((response) => {
-            //     var tmp = [], tmpImg = [];
-            //     this.allData = response.data
-            //     // this.allData = response.data.filter(v => v.category == 'Artworks')
-            //     this.allData.forEach((value, index, array) => { tmp.push(value.class); })
-            //     const set = new Set(tmp)
-            //     const newArr = [...set]
-            //     this.classList = newArr
+            axios.get("/json/Artworks.json").then((response) => {
+                var tmp = [], tmpImg = [];
+                this.allData = response.data
+                // this.allData = response.data.filter(v => v.category == 'Artworks')
+                this.allData.forEach((value, index, array) => { tmp.push(value.class); })
+                const set = new Set(tmp)
+                const newArr = [...set]
+                this.classList = newArr
 
-            //     newArr.forEach((value) => {
-            //         this.mainImg(value)
-            //     })
-            //     this.btnData(Object.values(this.classList)[0]);
-            //     console.log(this.ArtWorksImg)
-            // })
+                newArr.forEach((value) => {
+                    this.mainImg(value)
+                })
+                this.btnData(Object.values(this.classList)[0]);
+
+            })
         },
         mainImg(name) {
             const filter = this.allData.filter(v => v.class == name)
@@ -330,7 +327,7 @@ export default {
 <style>
 .simple-range-slider .simple-range-slider-popover[data-v-f6e84873] {
     padding: 0px !important;
-    border-radius: 0px !important;
+    border-radius: none !important;
     box-shadow: none !important;
 }
 

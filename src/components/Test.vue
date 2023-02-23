@@ -1,5 +1,9 @@
 <template>
-    <justified-grid class="container" v-bind:gap="gap" v-bind:defaultDirection="defaultDirection"
+    <RangeSlider v-model="imgRange" bar-color="#bebebe" :min="1980" :max="2020" :keep-just-significant-figures="false"
+        @update:model-value="imgRange">
+    </RangeSlider>
+
+    <!-- <justified-grid class="container" v-bind:gap="gap" v-bind:defaultDirection="defaultDirection"
         v-bind:columnRange="columnRange" v-bind:rowRange="rowRange" v-bind:sizeRange="sizeRange"
         v-bind:isCroppedSize="isCroppedSize" v-bind:displayedRow="displayedRow">
 
@@ -8,13 +12,16 @@
             <div class="title">Item {index}</div>
         </div>
 
-    </justified-grid>
+    </justified-grid> -->
 </template>
 <script>
+import RangeSlider from 'vue-simple-range-slider';
+import 'vue-simple-range-slider/css';
 import { JustifiedGrid } from "@egjs/vue-grid";
 export default {
     data() {
         return {
+            imgRange: [2000, 2200],
             gap: 10,
             defaultDirection: "end",
             columnRange: [1, 8],
@@ -37,7 +44,7 @@ export default {
         }
     },
     components: {
-        JustifiedGrid,
+        JustifiedGrid, RangeSlider
     },
 };
 </script>
