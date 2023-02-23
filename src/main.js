@@ -11,14 +11,23 @@ import router from './router'
 import jQuery from 'jquery'
 import MasonryWall from '@yeger/vue-masonry-wall'
 
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+
 const app = createApp(App);
 
-
+const vuetify = createVuetify({
+    components,
+    directives,
+})
 
 global.$ = jQuery;
 app.use($);
 app.use(router);
-
+app.use(vuetify)
 app.use(MasonryWall)
 
 DataTable.use(DataTablesLib);

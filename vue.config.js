@@ -7,18 +7,14 @@ module.exports = defineConfig({
   // chainWebpack: (config) => {
   //   config.resolve.alias.set('@', path.resolve(__dirname, './public/Json/'))
   // },
-  css: {
-    loaderOptions: {
-      sass: {
-        additionalData: `
-          @import "@/scss/_variables.scss";
-          @import "@/scss/_mixins.scss";
-        `
-        // data: `
-        //   @import "@/styles/_variables.scss";
-        //   @import "@/styles/_mixins.scss";
-        // `
-      }
-    }
-  }
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       additionalData: `
+  //         @import "./node_modules/bootstrap/scss/_variables.scss";
+  //         @import "./node_modules/bootstrap/scss/_mixins.scss";
+  //       `
+  //     }
+  //   }
+  // }
 })

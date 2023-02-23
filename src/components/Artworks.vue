@@ -110,6 +110,14 @@
 
 
     </div>
+
+    <div id="footer" class="border-top p-5 footerfont text-start">
+        The content of this site is for personal use only. Neither text nor images may be reproduced in any form without the
+        permission. <br />You may download content solely for your personal use for non-commercial purposes. You may not
+        modify or
+        further reproduce the content for any purpose whatsoever.<br /> You must request and obtain express permission from
+        HijoNam Studio for all other uses of content.
+    </div>
 </template>
 
 <script>
@@ -403,6 +411,10 @@ export default {
         object-fit: cover;
     }
 
+    #footer {
+        position: relative;
+        top: 150px;
+    }
 
 }
 </style>

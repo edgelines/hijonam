@@ -70,9 +70,8 @@
             <router-view />
         </div>
     </div>
-<!-- <footer class="bg-light">
+<!-- <footer class="fixed-bottom bg-light">
         footer <br />
-        instagram, kakao, facebook, youtube
     </footer> --></template>
 
 <script>
@@ -113,7 +112,8 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-
+    position: relative;
+    padding-bottom: 100px;
 }
 
 html,
@@ -123,12 +123,13 @@ body {
 
 #wrapper {
     height: auto;
-    min-height: 100%;
-    padding-bottom: 40px;
 }
 
 footer {
     bottom: 0;
+    height: 50px;
+    /* position: fixed; */
+
     /* height: 5%;
     position: relative;
     transform: translateY(-100%); */

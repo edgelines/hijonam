@@ -1,14 +1,23 @@
 <template>
     <div class="row Bio-Div">
         <div class="col-sm-12 col-md-4 col-lg-3 bioBtn">
-            <div id="ExhibitionBtnGroup" class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-lg"
-                    @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo</button>
-                <button type="button" class="btn btn-lg"
-                    @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group
-                </button>
+            <div id="ExhibitionBtnGroup" class="btn-group-vertical row-cols-auto" role="group" aria-label="Basic toggle">
+
+                <v-btn size="x-large" variant="text" class="text-capitalize"
+                    @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo</v-btn>
+
+                <v-btn size="x-large" variant="text" class="text-capitalize"
+                    @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group</v-btn>
+
+
             </div>
-            <!-- <button type="button" class="btn btn-bd-primary">Sample</button> -->
+            <!-- <v-btn-toggle rounded="1" group class="d-flex flex-column">
+
+                <v-btn size="x-large" class="text-capitalize">Solo</v-btn>
+                <v-btn size="x-large" class="text-capitalize">Group</v-btn>
+
+            </v-btn-toggle> -->
+
 
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8">
@@ -91,10 +100,23 @@ export default {
     } */
 }
 </style>
-<!-- 
-<style >
-@import "@/scss/variables";
-@import '../assets/scss/button.scss';
 
+<!-- <style lang="scss" >
+// @import "@/scss/variables";
+// @import '@/scss/button.scss';
 
+// .btn-bd-primary {
+//     --bs-btn-font-weight: 600;
+//     --bs-btn-color: var(--bs-white);
+//     --bs-btn-bg: var(--bd-violet);
+//     --bs-btn-border-color: var(--bd-violet);
+//     --bs-btn-border-radius: .5rem;
+//     --bs-btn-hover-color: var(--bs-white);
+//     --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+//     --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+//     --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+//     --bs-btn-active-color: var(--bs-btn-hover-color);
+//     --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+//     --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+// }
 </style> -->
