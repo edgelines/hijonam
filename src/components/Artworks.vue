@@ -3,21 +3,23 @@
         <v-col>
             <Carousel :autoplay="3000" :wrap-around="true" :transition="7500" :itemsToShow="5" :modelValue="2">
                 <Slide v-for="(classItem, i) in classList" :key="classItem">
-                    <v-hover v-slot="{ isHovering, props }" open-delay="100">
+                    <!-- <v-hover v-slot="{ isHovering, props }" open-delay="100">
                         <v-card :elevation="isHovering ? 16 : 5" :class="{ 'on-hover': isHovering }"
-                            class="mx-auto rounded-lg d-flex flex-column align-self-end" v-bind="props">
-                            <div @click="btnData(classItem);">
-                                <div class="col">
-                                    <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col imgTilteFont">
-                                    {{ classItem }}
-                                </div>
-                            </div>
+                            class="mx-auto d-flex flex-column align-self-end" v-bind="props">
                         </v-card>
-                    </v-hover>
+                    </v-hover> -->
+                    <div class="mx-auto d-flex flex-column align-self-end">
+                        <div @click="btnData(classItem);">
+                            <div class="col">
+                                <img class="artworksCategory" :src="'/img/Artworks/' + classListImg[i]" />
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col imgTilteFont">
+                                {{ classItem }}
+                            </div>
+                        </div>
+                    </div>
                 </Slide>
             </Carousel>
         </v-col>
@@ -117,8 +119,8 @@
             <div class="row mt-4">
                 <div class="col-md-4 col-lg-4 mb-2" v-for="(item, index) in imgData" key="item">
                     <v-hover v-slot="{ isHovering, props }" open-delay="100">
-                        <v-card :elevation="isHovering ? 16 : 5" :class="{ 'on-hover': isHovering }"
-                            class="mx-auto rounded-lg" max-width="350" v-bind="props">
+                        <v-card :elevation="isHovering ? 16 : 5" :class="{ 'on-hover': isHovering }" class="mx-auto imgItem"
+                            v-bind="props">
                             <img class="imgItem" :elevation="isHovering ? 16 : 2"
                                 :src="'./img/Artworks/' + item.fileName[0]" @click="imgSelect(item)" />
                         </v-card>

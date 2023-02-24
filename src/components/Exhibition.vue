@@ -1,9 +1,9 @@
 <template>
-    <v-card class="mt-5">
-        <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="title">
-            <v-tab value="Past">Past Exhibition</v-tab>
-            <v-tab value="Current">Current Exhibition</v-tab>
-            <v-tab value="Upcoming">Upcoming Exhibition</v-tab>
+    <v-card class="ExhibitionMain">
+        <v-tabs v-model="tab" color="black" align-tabs="title">
+            <v-tab value="Past"><span class="customizeTabs">Past Exhibition</span></v-tab>
+            <v-tab value="Current"><span class="customizeTabs">Current Exhibition</span></v-tab>
+            <v-tab value="Upcoming"><span class="customizeTabs">Upcoming Exhibition</span></v-tab>
         </v-tabs>
         <v-window v-model="tab">
             <v-window-item value="Past">
@@ -42,4 +42,12 @@ export default {
     components: { Past, Current, Upcoming },
 };
 </script>
-<style></style>
+<style>
+.ExhibitionMain {
+    margin-top: 80px;
+}
+
+.customizeTabs {
+    font-size: 15px;
+}
+</style>

@@ -1,27 +1,40 @@
 <template>
     <div id="Exhibition">
         <v-chip-group column v-model="select">
-            <v-chip filter size="large" @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">Solo</v-chip>
-            <v-chip filter size="large"
+            <v-chip filter size="large" variant="text"
+                @click="btnData('Solo Exhibitions'); this.title = 'Solo Exhibitions'">
+                <span class="customizeTabs">
+                    Solo
+                </span>
+            </v-chip>
+            <v-chip filter size="large" variant="text" class="ms-5"
                 @click="btnData('Group-Exhibitions'); this.title = 'Selected And Invitational Group Exhibitions'">Group</v-chip>
         </v-chip-group>
 
-        <div id="Table" class="row">
-            <div class="text-start" id="Bio-Table-MainTitle">
-                <h3>{{ title }}</h3>
-            </div>
-            <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
-                <thead>
-                    <tr>
-                        <th class="text-center Bio-Table-year">year</th>
-                        <th class="text-center Bio-Table-title">title</th>
-                        <th class="text-center Bio-Table-location">location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </DataTable>
-        </div>
+        <v-row id="Table">
+            <v-col cols="3">
+
+            </v-col>
+            <v-col cols="8">
+                <div class="text-start" id="Bio-Table-MainTitle">
+                    <h3>{{ title }}</h3>
+                </div>
+                <DataTable :options="options" :columns="columns" :data="tableData" class="text-start customizeTable ">
+                    <thead>
+                        <tr>
+                            <th class="text-center Bio-Table-year">year</th>
+                            <th class="text-center Bio-Table-title">title</th>
+                            <th class="text-center Bio-Table-location">location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </DataTable>
+            </v-col>
+        </v-row>
+        <!-- <div id="Table" class="row">
+            
+        </div> -->
 
     </div>
 </template>
